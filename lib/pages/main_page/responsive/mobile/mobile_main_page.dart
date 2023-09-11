@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
-class MobileHome extends StatelessWidget {
-  const MobileHome({super.key});
+class MobileMainPage extends StatefulWidget {
+  const MobileMainPage({super.key});
+
+  @override
+  State<MobileMainPage> createState() => _MobileMainPageState();
+}
+
+class _MobileMainPageState extends State<MobileMainPage> {
+  final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
