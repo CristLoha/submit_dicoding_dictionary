@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import 'pages/home_page.dart';
 import 'package:device_preview/device_preview.dart';
 
@@ -15,8 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBackgroundColor,
+        appBarTheme: AppBarTheme(
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: shamrockGreen,
+          iconTheme: IconThemeData(
+            color: blackColor,
+          ),
+          titleTextStyle: whiteTextStyle.copyWith(
+            fontSize: 20,
+            fontWeight: semiBold,
+          ),
+        ),
+      ),
       home: HomePage(),
     );
   }
