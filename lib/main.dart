@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-import 'pages/main_page.dart';
+import 'pages/main_page/main_page.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() => runApp(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/responsive_layout.dart';
-import 'mobile/mobile_home.dart';
-import 'web/web_home.dart';
+import 'mobile_home.dart';
+import 'web_home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
-import '../../main_page.dart';
+import '../bookmark/bookmark_page.dart';
+import 'main_page.dart';
+import '../search/search_page.dart';
 
 class MobileMainPage extends StatefulWidget {
   const MobileMainPage({super.key});
@@ -18,7 +20,7 @@ class _MobileMainPageState extends State<MobileMainPage> {
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
-    BookMarkPage(),
+    BookmarkPage(),
   ];
 
   @override
