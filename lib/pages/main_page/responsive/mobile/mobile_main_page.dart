@@ -16,7 +16,7 @@ class _MobileMainPageState extends State<MobileMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mobile Layout Size: ${MediaQuery.of(context).size.width}'),
+        title: Text('Mobile Layout '),
       ),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 6,
@@ -58,6 +58,15 @@ class _MobileMainPageState extends State<MobileMainPage> {
                   child: FaIcon(FontAwesomeIcons.bookBookmark),
                 ),
                 label: 'Arsip'),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+                'Size: Tinggi ${MediaQuery.of(context).size.height} Lebar: ${MediaQuery.of(context).size.height} ')
           ],
         ),
       ),
