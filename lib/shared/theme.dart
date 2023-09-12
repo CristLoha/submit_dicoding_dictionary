@@ -21,9 +21,12 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(
 );
 
 TextStyle greyTextStyle = GoogleFonts.poppins(
-  color: shamrockGreen,
+  color: greyColor,
 );
 
+TextStyle shamrockGreenTekxtStyle = GoogleFonts.poppins(
+  color: shamrockGreen,
+);
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;

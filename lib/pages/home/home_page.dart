@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/responsive_layout.dart';
-import 'responsiv/mobile_home.dart';
+import 'responsive/mobile_home.dart';
 import 'responsive/web_home.dart';
 
 class HomePage extends StatelessWidget {
