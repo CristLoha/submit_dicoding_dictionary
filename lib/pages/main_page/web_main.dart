@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class WebMainPage extends StatelessWidget {
-  const WebMainPage({super.key});
+class WebMain extends StatelessWidget {
+  const WebMain({super.key});
 
   @override
   Widget build(BuildContext context) {

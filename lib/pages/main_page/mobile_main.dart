@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-
 import '../bookmark/bookmark_page.dart';
-import 'main_page.dart';
+import '../home/home_page.dart';
 import '../search/search_page.dart';
 
-class MobileMainPage extends StatefulWidget {
-  const MobileMainPage({super.key});
+class MobileMain extends StatefulWidget {
+  const MobileMain({super.key});
 
   @override
-  State<MobileMainPage> createState() => _MobileMainPageState();
+  State<MobileMain> createState() => _MobileMainState();
 }
 
-class _MobileMainPageState extends State<MobileMainPage> {
-  final int _selectedIndex = 0;
+class _MobileMainState extends State<MobileMain> {
+  int _selectedIndex = 0;
 
   // Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
   final List<Widget> _pages = [
@@ -23,12 +22,15 @@ class _MobileMainPageState extends State<MobileMainPage> {
     BookmarkPage(),
   ];
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Mobile Layout '),
-      ),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 6,
         color: whiteColor,
@@ -48,6 +50,8 @@ class _MobileMainPageState extends State<MobileMainPage> {
             fontSize: 10,
             fontWeight: medium,
           ),
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
           items: const [
             BottomNavigationBarItem(
                 icon: Padding(
@@ -72,15 +76,7 @@ class _MobileMainPageState extends State<MobileMainPage> {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-                'Size: Tinggi ${MediaQuery.of(context).size.height} Lebar: ${MediaQuery.of(context).size.height} ')
-          ],
-        ),
-      ),
+      body: _pages[_selectedIndex],
     );
   }
 }
