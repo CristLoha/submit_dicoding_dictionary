@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-import '../bookmark/bookmark_page.dart';
-import '../home/home_page.dart';
-import '../search/search_page.dart';
+
+import '../../bookmark/bookmark_page.dart';
+import '../../home/home_page.dart';
+import '../../search/search_page.dart';
 
 class MobileMain extends StatefulWidget {
   const MobileMain({super.key});
@@ -16,7 +17,7 @@ class _MobileMainState extends State<MobileMain> {
   int _selectedIndex = 0;
 
   // Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
-  final List<Widget> _pages = [
+  final List<Widget> _pages = const [
     HomePage(),
     SearchPage(),
     BookmarkPage(),
