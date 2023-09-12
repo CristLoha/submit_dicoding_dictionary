@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
+import '../../main_page.dart';
+
 class MobileMainPage extends StatefulWidget {
   const MobileMainPage({super.key});
 
@@ -11,6 +13,13 @@ class MobileMainPage extends StatefulWidget {
 
 class _MobileMainPageState extends State<MobileMainPage> {
   final int _selectedIndex = 0;
+
+  // Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
+  final List<Widget> _pages = [
+    HomePage(),
+    SearchPage(),
+    BookMarkPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
