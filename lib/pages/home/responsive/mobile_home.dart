@@ -10,6 +10,9 @@ class MobileHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Kamus Bahasa Sahu'),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(

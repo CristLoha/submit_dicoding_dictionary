@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:submit_dicoding_dictionary/pages/home/responsive/web_home.dart';
 
 class WebMain extends StatelessWidget {
   const WebMain({super.key});
@@ -6,9 +7,7 @@ class WebMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Web Layout Size: ${MediaQuery.of(context).size.width}'),
-      ),
+      body: WebHome(),
     );
   }
 }
