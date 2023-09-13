@@ -47,11 +47,13 @@ class _WebMainState extends State<WebMain> {
               decoration: BoxDecoration(
                 color: shamrockGreen,
               ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+              child: Center(
+                child: Text(
+                  'Menu',
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 24,
+                    fontWeight: bold,
+                  ),
                 ),
               ),
             ),
@@ -63,7 +65,10 @@ class _WebMainState extends State<WebMain> {
                   /// Menggunakan ikon sesuai dengan indeks halaman
                   size: 20,
                 ),
-                title: Text(_pageNames[i]),
+                title: Text(
+                  _pageNames[i],
+                  style: blackTextStyle,
+                ),
 
                 /// Menggunakan  nama berdasarkan nama halaman
                 onTap: () {
