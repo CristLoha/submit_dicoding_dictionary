@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
           backgroundColor: shamrockGreen,
           iconTheme: IconThemeData(
-            color: blackColor,
+            color: whiteColor,
           ),
           titleTextStyle: whiteTextStyle.copyWith(
             fontSize: 20,
