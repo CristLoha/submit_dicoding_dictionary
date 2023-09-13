@@ -3,6 +3,7 @@ import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 
 import '../../../shared/img_string.dart';
 import '../../../shared/theme.dart';
+import '../../hewan/animal_page.dart';
 
 class WebHome extends StatelessWidget {
   const WebHome({super.key});
@@ -39,7 +40,14 @@ class WebHome extends StatelessWidget {
                       case 0:
                         title = "Hewan";
                         image = ImgString.imgCat;
-                        onTap = () {};
+                        onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AnimalPage(),
+                            ),
+                          );
+                        };
                         break;
                       case 1:
                         title = "Benda";

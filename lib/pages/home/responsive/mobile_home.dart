@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:submit_dicoding_dictionary/pages/hewan/animal_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
@@ -10,9 +11,6 @@ class MobileHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Kamus Bahasa Sahu'),
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -43,7 +41,14 @@ class MobileHome extends StatelessWidget {
                       case 0:
                         title = "Hewan";
                         image = ImgString.imgCat;
-                        onTap = () {};
+                        onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AnimalPage(),
+                            ),
+                          );
+                        };
                         break;
                       case 1:
                         title = "Benda";
