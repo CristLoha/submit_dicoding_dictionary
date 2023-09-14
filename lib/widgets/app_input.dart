@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../shared/theme.dart';
 
 class AppInput extends StatelessWidget {
@@ -25,10 +24,9 @@ class AppInput extends StatelessWidget {
       controller: controller,
       cursorColor: darkBlue,
       textCapitalization: TextCapitalization.sentences,
-      textAlign: TextAlign.start,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.only(left: 10, bottom: 20),
+        prefixIconColor: greyColor,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
