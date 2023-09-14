@@ -12,9 +12,8 @@ class WebHome extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 24,
-            right: 24,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
