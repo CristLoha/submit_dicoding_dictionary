@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:submit_dicoding_dictionary/pages/detail_hewan/detail_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 
 import '../../../shared/theme.dart';
@@ -25,6 +26,13 @@ class MobileAnimal extends StatelessWidget {
               color: whiteColor,
             ),
             child: ListTile(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const DetailPage();
+                  },
+                ));
+              },
               title: Text(
                 'Sedap',
                 style:

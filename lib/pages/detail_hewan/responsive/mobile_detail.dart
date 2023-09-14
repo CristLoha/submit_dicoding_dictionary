@@ -5,6 +5,13 @@ class MobileDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detail'),
+      ),
+      body: ListView(
+        children: [],
+      ),
+    );
   }
 }

@@ -11,7 +11,9 @@ Color shamrockGreen = const Color(0xFF34BF4A);
 Color darkGreen = const Color(0xff358D54);
 Color numberBackgroundColor = const Color(0xff1A1D2E);
 Color redColor = const Color(0xffFF2566);
-
+Color darkBlue = const Color(0xFF14193F);
+Color whisper = const Color(0xffEFEEF1);
+Color oldRose = const Color(0xffE82C51);
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor,
 );
