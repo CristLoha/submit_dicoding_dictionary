@@ -19,6 +19,7 @@ class MobileAnimal extends StatelessWidget {
           30.heightBox,
           Container(
             padding: const EdgeInsets.all(6),
+            margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: whiteColor,
