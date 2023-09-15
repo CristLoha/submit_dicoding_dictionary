@@ -7,6 +7,7 @@ class AppInput extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
   final String? initialValue;
+  final Color? colorBorder;
 
   const AppInput({
     Key? key,
@@ -15,6 +16,7 @@ class AppInput extends StatelessWidget {
     this.suffixIcon,
     this.obscureText,
     this.initialValue,
+    this.colorBorder,
   }) : super(key: key);
 
   @override
@@ -26,22 +28,16 @@ class AppInput extends StatelessWidget {
       textCapitalization: TextCapitalization.sentences,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
+        hintText: 'Cari kata...',
+        hintStyle: greyTextStyle,
         prefixIconColor: greyColor,
         prefixIcon: prefixIcon,
+        fillColor: whiteColor,
+        filled: true,
         suffixIcon: suffixIcon,
-        border: OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: BorderSide(
-            color: whisper,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            14,
-          ),
-          borderSide: BorderSide(
-            color: shamrockGreen,
-          ),
+          borderSide: BorderSide(color: whiteColor),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
@@ -60,7 +56,6 @@ class AppInput extends StatelessWidget {
           ),
         ),
       ),
-      // menggunakan initialValue jika controller null
     );
   }
 }
