@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/button_transparant.dart';
 import '../../../shared/theme.dart';
+import '../../../widgets/example_widget.dart';
 
 class MobileDetail extends StatelessWidget {
   const MobileDetail({super.key});
@@ -20,10 +21,12 @@ class MobileDetail extends StatelessWidget {
           fontSize: 20,
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
               color: shamrockGreen,
               child: Padding(
                 padding: EdgeInsets.only(
@@ -73,66 +76,28 @@ class MobileDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-              )),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                10.heightBox,
-                ExampleWidget(
-                  title: 'Contoh Kalimat',
-                  subtitle: 'Saya suka minum air',
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ExampleWidget extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  const ExampleWidget({
-    required this.title,
-    required this.subtitle,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: whiteColor, borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: shamrockGreenTextStyle.copyWith(
-                    fontSize: 18,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  10.heightBox,
+                  const ExampleWidget(
+                    title: 'Contoh Kalimat',
+                    subtitle: 'Saya suka minum air',
                   ),
-                ),
-                Icon(
-                  EvaIcons.copyOutline,
-                  color: shamrockGreen,
-                  size: 26,
-                ),
-              ],
+                  20.heightBox,
+                  const ExampleWidget(
+                    title: 'Definisi',
+                    subtitle:
+                        'Cairan jernih tidak berwarna, tidak berasa, dan tidak berbau yang diperlukan dalam kehidupan manusia, hewan, dan tumbuhan yang secara kimiawi mengandung hidrogen dan oksigen',
+                  ),
+                ],
+              ),
             ),
             20.heightBox,
-            Text(
-              subtitle,
-              style: blackTextStyle.copyWith(fontSize: 16),
-            ),
           ],
         ),
       ),
