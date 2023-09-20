@@ -77,10 +77,64 @@ class MobileDetail extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
-              children: [],
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                10.heightBox,
+                ExampleWidget(
+                  title: 'Contoh Kalimat',
+                  subtitle: 'Saya suka minum air',
+                ),
+              ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ExampleWidget extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  const ExampleWidget({
+    required this.title,
+    required this.subtitle,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: whiteColor, borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: shamrockGreenTextStyle.copyWith(
+                    fontSize: 18,
+                  ),
+                ),
+                Icon(
+                  EvaIcons.copyOutline,
+                  color: shamrockGreen,
+                  size: 26,
+                ),
+              ],
+            ),
+            20.heightBox,
+            Text(
+              subtitle,
+              style: blackTextStyle.copyWith(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }

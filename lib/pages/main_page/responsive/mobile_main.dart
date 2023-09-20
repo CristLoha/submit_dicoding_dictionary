@@ -46,7 +46,7 @@ class _MobileMainState extends State<MobileMain> {
           unselectedItemColor: blackColor,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          selectedLabelStyle: shamrockGreenTekxtStyle.copyWith(
+          selectedLabelStyle: shamrockGreenTextStyle.copyWith(
             fontSize: 10,
             fontWeight: medium,
           ),

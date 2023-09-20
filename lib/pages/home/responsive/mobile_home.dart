@@ -149,7 +149,7 @@ Widget titleKategori() {
       ),
       Text(
         'Semua',
-        style: shamrockGreenTekxtStyle.copyWith(
+        style: shamrockGreenTextStyle.copyWith(
           fontSize: 18,
           fontWeight: medium,
         ),
