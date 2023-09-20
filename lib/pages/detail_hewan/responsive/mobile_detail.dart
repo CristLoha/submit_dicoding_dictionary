@@ -1,6 +1,8 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share/share.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/button_transparant.dart';
 import '../../../shared/theme.dart';
@@ -11,6 +13,11 @@ class MobileDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String textCopy1 = 'Banyo';
+    const String contohkalimat = "Saya suka minum air";
+    const String definisi =
+        "Cairan jernih tidak berwarna, tidak berasa, dan tidak berbau yang diperlukan dalam kehidupan manusia, hewan, dan tumbuhan yang secara kimiawi mengandung hidrogen dan oksigen";
+    const String arti = 'Air';
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -39,14 +46,14 @@ class MobileDetail extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'Banyo',
+                        textCopy1,
                         style: whiteTextStyle.copyWith(
                           fontSize: 30,
                           fontWeight: semiBold,
                         ),
                       ),
                       Text(
-                        'Air',
+                        arti,
                         style: whiteTextStyle.copyWith(
                           fontSize: 16,
                         ),
@@ -56,7 +63,15 @@ class MobileDetail extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ButtonTransparant(
-                            onTap: () {},
+                            onTap: () {
+                              Clipboard.setData(ClipboardData(text: textCopy1));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Teks berhasil disalin'),
+                                  duration: Duration(seconds: 1),
+                                ),
+                              );
+                            },
                             icon: EvaIcons.copyOutline,
                           ),
                           ButtonTransparant(
@@ -64,7 +79,10 @@ class MobileDetail extends StatelessWidget {
                             icon: FontAwesomeIcons.bookmark,
                           ),
                           ButtonTransparant(
-                            onTap: () {},
+                            onTap: () {
+                              Share.share(
+                                  "Kata $textCopy1 artinya: $arti\nContoh kalimat: $contohkalimat\nDefinisi: $definisi");
+                            },
                             icon: EvaIcons.shareOutline,
                           ),
                           ButtonTransparant(
@@ -86,13 +104,12 @@ class MobileDetail extends StatelessWidget {
                   10.heightBox,
                   const ExampleWidget(
                     title: 'Contoh Kalimat',
-                    subtitle: 'Saya suka minum air',
+                    subtitle: contohkalimat,
                   ),
                   20.heightBox,
                   const ExampleWidget(
                     title: 'Definisi',
-                    subtitle:
-                        'Cairan jernih tidak berwarna, tidak berasa, dan tidak berbau yang diperlukan dalam kehidupan manusia, hewan, dan tumbuhan yang secara kimiawi mengandung hidrogen dan oksigen',
+                    subtitle: definisi,
                   ),
                 ],
               ),

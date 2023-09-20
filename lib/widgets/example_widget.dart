@@ -37,8 +37,9 @@ class ExampleWidget extends StatelessWidget {
                   onTap: () {
                     Clipboard.setData(ClipboardData(text: subtitle));
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Teks berhasil disalin'),
+                        duration: Duration(seconds: 1),
                       ),
                     );
                   },
