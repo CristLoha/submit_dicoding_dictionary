@@ -18,7 +18,9 @@ class ExampleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: whiteColor, borderRadius: BorderRadius.circular(12)),
+        color: whiteColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(

@@ -37,7 +37,16 @@ class _WebMainState extends State<WebMain> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kamus Bahasa Sahu'),
+        centerTitle: false,
+        iconTheme: IconThemeData(color: blackColor),
+        backgroundColor: lightBackgroundColor,
+        title: Text(
+          'Kamus Bahasa Sahu',
+          style: blackTextStyle.copyWith(
+            fontWeight: semiBold,
+            fontSize: 20,
+          ),
+        ),
       ),
       drawer: Drawer(
         child: ListView(

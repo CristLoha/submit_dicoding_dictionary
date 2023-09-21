@@ -3,13 +3,13 @@ import '../shared/theme.dart';
 
 class ButtonTransparant extends StatelessWidget {
   final VoidCallback onTap;
-
   final IconData icon;
-
+  final Color? color;
   const ButtonTransparant({
     Key? key,
     required this.onTap,
     required this.icon,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -27,13 +27,15 @@ class ButtonTransparant extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
-            child: Column(
-              children: [
-                Icon(
-                  icon,
-                  color: whiteColor,
-                ),
-              ],
+            child: Expanded(
+              child: Column(
+                children: [
+                  Icon(
+                    icon,
+                    color: color ?? whiteColor,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

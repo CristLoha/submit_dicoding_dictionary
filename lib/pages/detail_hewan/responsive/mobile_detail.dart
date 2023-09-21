@@ -90,7 +90,7 @@ class MobileDetail extends StatelessWidget {
                             icon: EvaIcons.volumeUpOutline,
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
