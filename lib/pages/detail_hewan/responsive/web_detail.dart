@@ -33,8 +33,8 @@ class WebDetail extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 135,
-            vertical: 30,
+            horizontal: 60,
+            vertical: 20,
           ),
           child: Column(
             children: [

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-
 import '../../bookmark/bookmark_page.dart';
 import '../../home/home_page.dart';
 import '../../search/search_page.dart';
@@ -14,73 +13,111 @@ class MobileMain extends StatefulWidget {
 }
 
 class _MobileMainState extends State<MobileMain> {
-  int _selectedIndex = 0;
+  int _selectedPageIndex = 0;
 
-  // Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
   final List<Widget> _pages = const [
     HomePage(),
     SearchPage(),
     BookmarkPage(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  final List<String> _pageNames = const [
+    'Beranda',
+    'Pencarian',
+    'Arsip',
+  ];
+  final List<List<dynamic>> _pageData = [
+    // Data halaman 1 (Beranda)
+    ['Beranda', null],
+
+    // Data halaman 2 (Pencarian)
+    ['Pencarian', null],
+
+    // Data halaman 3 (Arsip)
+    ['Arsip', Icons.delete],
+  ];
+
+  bool isBookmarkPage() {
+    return _selectedPageIndex == 2;
   }
+
+  final List<IconData> _pageIcons = const [
+    FontAwesomeIcons.house,
+    FontAwesomeIcons.magnifyingGlass,
+    FontAwesomeIcons.bookBookmark,
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kamus Bahasa Sahu'),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 6,
-        color: whiteColor,
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          backgroundColor: whiteColor,
-          selectedItemColor: shamrockGreen,
-          unselectedItemColor: blackColor,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedLabelStyle: shamrockGreenTextStyle.copyWith(
-            fontSize: 10,
-            fontWeight: medium,
+        centerTitle: false,
+        title: Text(
+          _pageData[_selectedPageIndex]
+              [0], // Menampilkan nama halaman berdasarkan indeks
+          style: whiteTextStyle.copyWith(
+            fontWeight: semiBold,
+            fontSize: 20,
           ),
-          unselectedLabelStyle: blackTextStyle.copyWith(
-            fontSize: 10,
-            fontWeight: medium,
-          ),
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: FaIcon(
-                    FontAwesomeIcons.house,
+        ),
+        actions: _pageData[_selectedPageIndex][2] != null
+            ? [
+                IconButton(
+                  onPressed: () {
+                    // Tambahkan logika untuk menghapus item bookmark di sini
+                  },
+                  icon: Icon(
+                    _pageData[_selectedPageIndex]
+                        [2], // Menampilkan ikon delete berdasarkan indeks
+                    color: whiteColor,
                   ),
                 ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: FaIcon(FontAwesomeIcons.magnifyingGlass),
+              ]
+            : null, // Tampilkan ikon delete hanya jika ada
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: shamrockGreen,
+              ),
+              child: Center(
+                child: Text(
+                  'Menu',
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 24,
+                    fontWeight: bold,
+                  ),
                 ),
-                label: 'Pencarian'),
-            BottomNavigationBarItem(
-                icon: Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: FaIcon(FontAwesomeIcons.bookBookmark),
+              ),
+            ),
+            for (int i = 0; i < _pages.length; i++)
+              ListTile(
+                leading: FaIcon(
+                  _pageIcons[i],
+
+                  /// Menggunakan ikon sesuai dengan indeks halaman
+                  size: 20,
                 ),
-                label: 'Arsip'),
+                title: Text(
+                  _pageNames[i],
+                  style: blackTextStyle,
+                ),
+
+                /// Menggunakan  nama berdasarkan nama halaman
+                onTap: () {
+                  setState(() {
+                    _selectedPageIndex = i;
+                  });
+                  Navigator.pop(context); // Menutup menu drawer
+                },
+              ),
           ],
         ),
       ),
-      body: _pages[_selectedIndex],
+      body: _pages[_selectedPageIndex], // Menampilkan halaman yang dipilih
     );
   }
 }
