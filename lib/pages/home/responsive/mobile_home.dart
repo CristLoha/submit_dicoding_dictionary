@@ -22,6 +22,7 @@ class MobileHome extends StatelessWidget {
             children: [
               30.heightBox,
               titleKategori(),
+              30.heightBox,
               Expanded(
                 child: GridView.builder(
                   padding: const EdgeInsets.only(bottom: 20, top: 30),
@@ -145,13 +146,6 @@ Widget titleKategori() {
         style: blackTextStyle.copyWith(
           fontSize: 20,
           fontWeight: semiBold,
-        ),
-      ),
-      Text(
-        'Semua',
-        style: shamrockGreenTextStyle.copyWith(
-          fontSize: 18,
-          fontWeight: medium,
         ),
       ),
     ],

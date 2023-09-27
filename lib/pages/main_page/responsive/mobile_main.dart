@@ -28,18 +28,14 @@ class _MobileMainState extends State<MobileMain> {
   ];
   final List<List<dynamic>> _pageData = [
     // Data halaman 1 (Beranda)
-    ['Beranda', null],
+    ['Kamus Bahasa Sahu', false, null],
 
     // Data halaman 2 (Pencarian)
-    ['Pencarian', null],
+    ['Pencarian', false, null],
 
     // Data halaman 3 (Arsip)
-    ['Arsip', Icons.delete],
+    ['Arsip', true, Icons.delete],
   ];
-
-  bool isBookmarkPage() {
-    return _selectedPageIndex == 2;
-  }
 
   final List<IconData> _pageIcons = const [
     FontAwesomeIcons.house,
@@ -64,16 +60,32 @@ class _MobileMainState extends State<MobileMain> {
             ? [
                 IconButton(
                   onPressed: () {
-                    // Tambahkan logika untuk menghapus item bookmark di sini
+                    if (_pageData[_selectedPageIndex][2] ==
+                        Icons.local_convenience_store_sharp) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Ini halaman Pencarian'),
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    } else if (_pageData[_selectedPageIndex][2] ==
+                        Icons.delete) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Ini halaman Arsip'),
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    }
                   },
                   icon: Icon(
                     _pageData[_selectedPageIndex]
-                        [2], // Menampilkan ikon delete berdasarkan indeks
+                        [2], // Menampilkan ikon berdasarkan indeks
                     color: whiteColor,
                   ),
                 ),
               ]
-            : null, // Tampilkan ikon delete hanya jika ada
+            : null,
       ),
       drawer: Drawer(
         child: ListView(
