@@ -35,6 +35,12 @@ class AppInput extends StatelessWidget {
         fillColor: whiteColor,
         filled: true,
         suffixIcon: suffixIcon,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(
+            color: shamrockGreen,
+          ),
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
           borderSide: BorderSide(color: whiteColor),
