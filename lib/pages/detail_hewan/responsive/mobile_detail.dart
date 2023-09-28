@@ -103,7 +103,7 @@ class MobileDetail extends StatelessWidget {
                 children: [
                   10.heightBox,
                   const ExampleWidget(
-                    title: 'Contoh Kalimat',
+                    title: 'Contoh Kalimat [ID]',
                     subtitle: contohkalimat,
                   ),
                   20.heightBox,

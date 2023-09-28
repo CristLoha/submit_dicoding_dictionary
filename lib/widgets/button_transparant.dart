@@ -27,15 +27,9 @@ class ButtonTransparant extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
-            child: Expanded(
-              child: Column(
-                children: [
-                  Icon(
-                    icon,
-                    color: color ?? whiteColor,
-                  ),
-                ],
-              ),
+            child: Icon(
+              icon,
+              color: color ?? whiteColor,
             ),
           ),
         ),
