@@ -44,7 +44,7 @@ class WebDetail extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(
+                  padding:const  EdgeInsets.only(
                     bottom: 30,
                     left: 24,
                     right: 24,
@@ -73,7 +73,7 @@ class WebDetail extends StatelessWidget {
                             ButtonTransparant(
                               onTap: () {
                                 Clipboard.setData(
-                                    ClipboardData(text: textCopy1));
+                               const      ClipboardData(text: textCopy1));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content: Text('Teks berhasil disalin'),

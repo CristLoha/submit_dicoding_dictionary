@@ -36,7 +36,7 @@ class MobileDetail extends StatelessWidget {
             Container(
               color: shamrockGreen,
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   bottom: 30,
                   left: 24,
                   right: 24,
@@ -64,7 +64,8 @@ class MobileDetail extends StatelessWidget {
                         children: [
                           ButtonTransparant(
                             onTap: () {
-                              Clipboard.setData(ClipboardData(text: textCopy1));
+                              Clipboard.setData(
+                                  const ClipboardData(text: textCopy1));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Teks berhasil disalin'),

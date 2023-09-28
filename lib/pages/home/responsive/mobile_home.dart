@@ -46,7 +46,7 @@ class MobileHome extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AnimalPage(),
+                              builder: (context) => const AnimalPage(),
                             ),
                           );
                         };
@@ -59,44 +59,32 @@ class MobileHome extends StatelessWidget {
                       case 2:
                         title = "Kerja";
                         image = ImgString.imgChat;
-                        onTap = () {
-                          print('OPEN CAMERA');
-                        };
+                        onTap = () {};
                         break;
                       case 3:
                         title = "Tumbuhan";
                         image = ImgString.imgtree;
-                        onTap = () {
-                          print('OPEN PDF');
-                        };
+                        onTap = () {};
                         break;
                       case 4:
                         title = "Tempat";
                         image = ImgString.imgMap;
-                        onTap = () {
-                          print('OPEN PDF');
-                        };
+                        onTap = () {};
                         break;
                       case 5:
                         title = "Angka";
                         image = ImgString.imgNumbers;
-                        onTap = () {
-                          print('OPEN PDF');
-                        };
+                        onTap = () {};
                         break;
                       case 6:
                         title = "Anggota Tubuh";
                         image = ImgString.imgBody;
-                        onTap = () {
-                          print('OPEN PDF');
-                        };
+                        onTap = () {};
                         break;
                       case 7:
                         title = "Depan";
                         image = ImgString.imgEntrance;
-                        onTap = () {
-                          print('OPEN PDF');
-                        };
+                        onTap = () {};
                         break;
 
                       default:

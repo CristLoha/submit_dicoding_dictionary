@@ -23,12 +23,12 @@ class WebAnimal extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 130,
         ),
         children: [
           30.heightBox,
-          Container(
+          const SizedBox(
             width: 50,
             child: AppInput(
               prefixIcon: Icon(Icons.search, size: 28),

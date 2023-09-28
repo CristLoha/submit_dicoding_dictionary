@@ -13,14 +13,14 @@ class MobileAnimal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hewan'),
+        title: const Text('Hewan'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
             30.heightBox,
-            AppInput(
+            const AppInput(
               prefixIcon: Icon(Icons.search, size: 28),
             ),
             30.heightBox,
