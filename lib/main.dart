@@ -4,14 +4,23 @@ import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'pages/main_page/main_page.dart';
 
-void main() => runApp(
-      DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => const MyApp(),
-      ),
-    );
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-// void main() => runApp(MyApp());
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
+}
+// void main() {
+// runApp(MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -35,7 +44,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MainPage(),
+      home: const MainPage(),
     );
   }
 }
