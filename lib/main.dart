@@ -1,26 +1,31 @@
-import 'package:flutter/foundation.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-import 'package:device_preview/device_preview.dart';
 import 'pages/main_page/main_page.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
+// void main() async {
+
+//   runApp(
+//     DevicePreview(
+//       enabled: !kReleaseMode,
+//       builder: (context) => const MyApp(),
+//     ),
+//   );
+// }
 void main() async {
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Memastikan binding diinisialisasi
+  DartPluginRegistrant
+      .ensureInitialized(); // Memastikan plugin Dart diinisialisasi
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(),
-    ),
-  );
+  runApp(MyApp());
 }
-// void main() {
-// runApp(MyApp());
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
