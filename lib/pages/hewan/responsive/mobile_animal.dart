@@ -6,9 +6,15 @@ import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
 
 import '../../../shared/theme.dart';
 
-class MobileAnimal extends StatelessWidget {
+class MobileAnimal extends StatefulWidget {
   const MobileAnimal({super.key});
 
+  @override
+  State<MobileAnimal> createState() => _MobileAnimalState();
+}
+
+class _MobileAnimalState extends State<MobileAnimal> {
+  // final databaseReference = FirebaseDatabase.instan
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +27,10 @@ class MobileAnimal extends StatelessWidget {
           children: [
             30.heightBox,
             const AppInput(
-              prefixIcon: Icon(Icons.search, size: 28),
+              prefixIcon: Icon(
+                Icons.search,
+                size: 28,
+              ),
             ),
             30.heightBox,
             Container(
@@ -33,11 +42,14 @@ class MobileAnimal extends StatelessWidget {
               ),
               child: ListTile(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return const DetailPage();
-                    },
-                  ));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const DetailPage();
+                      },
+                    ),
+                  );
                 },
                 title: Text(
                   'Sedap',

@@ -13,11 +13,6 @@ class MobileDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String textCopy1 = 'Banyo';
-    const String contohkalimat = "Saya suka minum air";
-    const String definisi =
-        "Cairan jernih tidak berwarna, tidak berasa, dan tidak berbau yang diperlukan dalam kehidupan manusia, hewan, dan tumbuhan yang secara kimiawi mengandung hidrogen dan oksigen";
-    const String arti = 'Air';
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -46,14 +41,14 @@ class MobileDetail extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        textCopy1,
+                        'textCopy1',
                         style: whiteTextStyle.copyWith(
                           fontSize: 30,
                           fontWeight: semiBold,
                         ),
                       ),
                       Text(
-                        arti,
+                        '   arti',
                         style: whiteTextStyle.copyWith(
                           fontSize: 16,
                         ),
@@ -65,7 +60,7 @@ class MobileDetail extends StatelessWidget {
                           ButtonTransparant(
                             onTap: () {
                               Clipboard.setData(
-                                  const ClipboardData(text: textCopy1));
+                                  ClipboardData(text: "textCopy1"));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Teks berhasil disalin'),
@@ -82,7 +77,7 @@ class MobileDetail extends StatelessWidget {
                           ButtonTransparant(
                             onTap: () {
                               Share.share(
-                                  "Kata $textCopy1 artinya: $arti\nContoh kalimat: $contohkalimat\nDefinisi: $definisi");
+                                  "Kata artinya: \nContoh kalimat: \nDefinisi: ");
                             },
                             icon: EvaIcons.shareOutline,
                           ),
@@ -102,15 +97,20 @@ class MobileDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  10.heightBox,
+                  20.heightBox,
                   const ExampleWidget(
                     title: 'Contoh Kalimat [ID]',
-                    subtitle: contohkalimat,
+                    subtitle: 'contohkalimat',
+                  ),
+                  20.heightBox,
+                  const ExampleWidget(
+                    title: 'Contoh Kalimat [SH]',
+                    subtitle: 'contohkalimat',
                   ),
                   20.heightBox,
                   const ExampleWidget(
                     title: 'Definisi',
-                    subtitle: definisi,
+                    subtitle: 'definisi',
                   ),
                 ],
               ),
