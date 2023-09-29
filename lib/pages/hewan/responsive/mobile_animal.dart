@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:submit_dicoding_dictionary/models/stream_manager.dart';
 import 'package:submit_dicoding_dictionary/pages/detail_hewan/detail_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
@@ -16,9 +17,11 @@ class MobileAnimal extends StatefulWidget {
 }
 
 class _MobileAnimalState extends State<MobileAnimal> {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Stream<QuerySnapshot> getStream(String collection) {
-    return _firestore.collection(collection).snapshots();
+  StreamManager streamManager = StreamManager();
+  @override
+  void initState() {
+    super.initState();
+    streamManager = StreamManager();
   }
 
   @override
@@ -44,13 +47,13 @@ class _MobileAnimalState extends State<MobileAnimal> {
                 color: whiteColor,
               ),
               child: StreamBuilder<QuerySnapshot>(
-                stream: getStream('kamus'),
+                stream: streamManager.getStream('hewan'),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    // Tampilkan tampilan shimmer saat masih loading
-                    return ShimmerLoadingList();
+                    /// Menampilkan shimmer saat masih memproses data
+                    return const ShimmerLoadingList();
                   } else if (snapshot.hasData) {
-                    // Setelah data diterima, tampilkan data aktual
+                    /// Setelah data diterima, maka data akan ditampilkan
                     List<DocumentSnapshot> docs = snapshot.data!.docs;
                     return ListView.builder(
                       shrinkWrap: true,
