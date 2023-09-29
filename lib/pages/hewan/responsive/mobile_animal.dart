@@ -39,29 +39,29 @@ class _MobileAnimalState extends State<MobileAnimal> {
               prefixIcon: Icon(Icons.search, size: 28),
             ),
             30.heightBox,
-            Container(
-              padding: const EdgeInsets.all(6),
-              margin: const EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: whiteColor,
-              ),
-              child: StreamBuilder<QuerySnapshot>(
-                stream: streamManager.getStream('hewan'),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    /// Menampilkan shimmer saat masih memproses data
-                    return const ShimmerLoadingList();
-                  } else if (snapshot.hasData) {
-                    /// Setelah data diterima, maka data akan ditampilkan
-                    List<DocumentSnapshot> docs = snapshot.data!.docs;
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: docs.length,
-                      itemBuilder: (context, index) {
-                        String title = docs[index]['kataIndo'];
-                        String subtitle = docs[index]['kataSahu'];
-                        return ListTile(
+            StreamBuilder<QuerySnapshot>(
+              stream: streamManager.getStream('hewan'),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  /// Menampilkan shimmer saat masih memproses data
+                  return const ShimmerLoadingList();
+                } else if (snapshot.hasData) {
+                  /// Setelah data diterima, maka data akan ditampilkan
+                  List<DocumentSnapshot> docs = snapshot.data!.docs;
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: docs.length,
+                    itemBuilder: (context, index) {
+                      String title = docs[index]['kataIndo'];
+                      String subtitle = docs[index]['kataSahu'];
+                      return Container(
+                        padding: const EdgeInsets.all(6),
+                        margin: const EdgeInsets.only(bottom: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: whiteColor,
+                        ),
+                        child: ListTile(
                           onTap: () {
                             Navigator.push(
                               context,
@@ -85,20 +85,20 @@ class _MobileAnimalState extends State<MobileAnimal> {
                             FontAwesomeIcons.solidBookmark,
                             color: shamrockGreen,
                           ),
-                        );
-                      },
-                    );
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: ${snapshot.error}'),
-                    );
-                  } else {
-                    return const Center(
-                      child: Text('Masukkan kata kunci untuk mencari.'),
-                    );
-                  }
-                },
-              ),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                } else {
+                  return const Center(
+                    child: Text('Masukkan kata kunci untuk mencari.'),
+                  );
+                }
+              },
             ),
           ],
         ),
