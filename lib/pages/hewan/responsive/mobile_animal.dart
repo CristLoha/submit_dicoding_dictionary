@@ -43,15 +43,18 @@ class _MobileAnimalState extends State<MobileAnimal> {
           keyword.toLowerCase(); // Konversi keyword ke huruf kecil
 
       setState(() {
-        // Filter data yang cocok dengan keyword
+        /// Filter data yang cocok dengan keyword dalam field 'kataIndo' atau 'kataSahu'
         _searchResults = _allData.where((document) {
-          String title = document['kataIndo']
-              .toLowerCase(); // Konversi data ke huruf kecil
-          return title.contains(lowercaseKeyword);
+          String kataIndo = document['kataIndo']
+              .toLowerCase(); // Konversi data 'kataIndo' ke huruf kecil
+          String kataSahu = document['kataSahu']
+              .toLowerCase(); // Konversi data 'kataSahu' ke huruf kecil
+          return kataIndo.contains(lowercaseKeyword) ||
+              kataSahu.contains(lowercaseKeyword);
         }).toList();
       });
     } else {
-      // Kosongkan hasil pencarian jika keyword kosong
+      /// Kosongkan hasil pencarian jika keyword kosong
       setState(() {
         _searchResults = [];
       });
@@ -92,9 +95,9 @@ class _MobileAnimalState extends State<MobileAnimal> {
                     } else if (snapshot.hasData) {
                       /// Setelah data diterima, maka data akan ditampilkan
                       List<DocumentSnapshot> docs = snapshot.data!;
-
                       return ListView.builder(
                         shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: docs.length,
                         itemBuilder: (context, index) {
                           String title = docs[index]['kataIndo'];
@@ -107,20 +110,22 @@ class _MobileAnimalState extends State<MobileAnimal> {
                               color: whiteColor,
                             ),
                             child: ListTile(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return const DetailPage();
-                                    },
-                                  ),
-                                );
-                              },
-                              title: Text(
-                                title,
-                                style: blackTextStyle.copyWith(
-                                    fontSize: 20, fontWeight: medium),
+                              title: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const DetailPage();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  title,
+                                  style: blackTextStyle.copyWith(
+                                      fontSize: 20, fontWeight: medium),
+                                ),
                               ),
                               subtitle: Text(
                                 subtitle,
@@ -164,6 +169,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
                       }
                       return ListView.builder(
                         shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: docs.length,
                         itemBuilder: (context, index) {
                           String title = docs[index]['kataIndo'];
@@ -176,28 +182,33 @@ class _MobileAnimalState extends State<MobileAnimal> {
                               color: whiteColor,
                             ),
                             child: ListTile(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return DetailPage();
-                                    },
-                                  ),
-                                );
-                              },
-                              title: Text(
-                                title,
-                                style: blackTextStyle.copyWith(
-                                    fontSize: 20, fontWeight: medium),
+                              title: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const DetailPage();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  title,
+                                  style: blackTextStyle.copyWith(
+                                      fontSize: 20, fontWeight: medium),
+                                ),
                               ),
                               subtitle: Text(
                                 subtitle,
                                 style: greyTextStyle.copyWith(fontSize: 18),
                               ),
-                              trailing: FaIcon(
-                                FontAwesomeIcons.solidBookmark,
-                                color: shamrockGreen,
+                              trailing: IconButton(
+                                onPressed: () {},
+                                icon: FaIcon(
+                                  FontAwesomeIcons.solidBookmark,
+                                  color: shamrockGreen,
+                                ),
                               ),
                             ),
                           );

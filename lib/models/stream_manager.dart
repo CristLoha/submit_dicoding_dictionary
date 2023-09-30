@@ -10,16 +10,10 @@ class StreamManager {
         .snapshots();
   }
 
-  /// Membuat fungsi untuk mencari data berdasarkan kata kunci dan kategori
   Stream<QuerySnapshot> searchData(String keyword, String category) {
     return _firestore
         .collection('kamus')
-        .where('kataIndo', isEqualTo: keyword)
-
-        /// Mencari dokumen yang memiliki field kataIndo sama dengan keyword
         .where('kategori', isEqualTo: category)
-
-        /// Mencari dokumen yang memiliki field kategori sama dengan category
         .snapshots();
   }
 }
