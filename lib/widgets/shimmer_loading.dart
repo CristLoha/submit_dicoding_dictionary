@@ -16,14 +16,20 @@ class ShimmerLoadingList extends StatelessWidget {
           highlightColor: const Color.fromRGBO(245, 245, 245, 1),
           child: ListTile(
             title: Container(
-              width: double.infinity,
+              width: 50,
               height: 15.0,
-              color: whiteColor,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: whiteColor,
+              ),
             ),
             subtitle: Container(
-              width: double.infinity,
+              width: 60,
               height: 10.0,
-              color: whiteColor,
+              decoration: BoxDecoration(
+                color: whiteColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
             ),
           ),
         );

@@ -6,7 +6,6 @@ import 'package:submit_dicoding_dictionary/pages/detail_hewan/detail_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
 import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';
-
 import '../../../shared/theme.dart';
 
 class MobileAnimal extends StatefulWidget {
@@ -18,6 +17,7 @@ class MobileAnimal extends StatefulWidget {
 
 class _MobileAnimalState extends State<MobileAnimal> {
   StreamManager streamManager = StreamManager();
+
   @override
   void initState() {
     super.initState();
