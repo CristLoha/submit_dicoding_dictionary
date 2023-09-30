@@ -39,12 +39,16 @@ class _MobileAnimalState extends State<MobileAnimal> {
   /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
-      // Gunakan fungsi pencarian dari StreamManager
-      _streamManager.searchData(keyword, 'hewan').listen((data) {
-        setState(() {
-          // Perbarui hasil pencarian
-          _searchResults = data.docs;
-        });
+      String lowercaseKeyword =
+          keyword.toLowerCase(); // Konversi keyword ke huruf kecil
+
+      setState(() {
+        // Filter data yang cocok dengan keyword
+        _searchResults = _allData.where((document) {
+          String title = document['kataIndo']
+              .toLowerCase(); // Konversi data ke huruf kecil
+          return title.contains(lowercaseKeyword);
+        }).toList();
       });
     } else {
       // Kosongkan hasil pencarian jika keyword kosong
@@ -73,11 +77,11 @@ class _MobileAnimalState extends State<MobileAnimal> {
                   _performSearch(
                       value); // Memanggil fungsi pencarian saat teks berubah
                 },
-                prefixIcon: Icon(Icons.search, size: 28),
+                prefixIcon: const Icon(Icons.search, size: 28),
               ),
               30.heightBox,
 
-              // Tampilan semua data
+              /// Tampilan semua data
               if (_searchController.text.isEmpty)
                 StreamBuilder<List<DocumentSnapshot>>(
                   stream: Stream.value(_allData),
@@ -88,6 +92,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
                     } else if (snapshot.hasData) {
                       /// Setelah data diterima, maka data akan ditampilkan
                       List<DocumentSnapshot> docs = snapshot.data!;
+
                       return ListView.builder(
                         shrinkWrap: true,
                         itemCount: docs.length,
@@ -107,7 +112,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return DetailPage();
+                                      return const DetailPage();
                                     },
                                   ),
                                 );
@@ -134,14 +139,12 @@ class _MobileAnimalState extends State<MobileAnimal> {
                         child: Text('Error: ${snapshot.error}'),
                       );
                     } else {
-                      return const Center(
-                        child: Text('Tidak ada data yang ditemukan.'),
-                      );
+                      return const SizedBox();
                     }
                   },
                 ),
 
-              // Tampilan hasil pencarian
+              /// Tampilan hasil pencarian
               if (_searchController.text.isNotEmpty)
                 StreamBuilder<List<DocumentSnapshot>>(
                   stream: Stream.value(_searchResults),
@@ -152,6 +155,13 @@ class _MobileAnimalState extends State<MobileAnimal> {
                     } else if (snapshot.hasData) {
                       /// Setelah data diterima, maka data akan ditampilkan
                       List<DocumentSnapshot> docs = snapshot.data!;
+
+                      ///jika tidak ada kata cocok
+                      if (docs.isEmpty) {
+                        return const Center(
+                          child: Text('Tidak ada data yang ditemukan.'),
+                        );
+                      }
                       return ListView.builder(
                         shrinkWrap: true,
                         itemCount: docs.length,
@@ -198,9 +208,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
                         child: Text('Error: ${snapshot.error}'),
                       );
                     } else {
-                      return const Center(
-                        child: Text('Tidak ada hasil pencarian.'),
-                      );
+                      return const SizedBox();
                     }
                   },
                 ),
