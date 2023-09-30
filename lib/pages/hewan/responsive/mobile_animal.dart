@@ -16,22 +16,22 @@ class MobileAnimal extends StatefulWidget {
 }
 
 class _MobileAnimalState extends State<MobileAnimal> {
-  StreamManager streamManager = StreamManager();
-  TextEditingController _searchController = TextEditingController();
+  StreamManager _streamManager = StreamManager();
+  final TextEditingController _searchController = TextEditingController();
 
   /// Variabel untuk menyimpan hasil pencarian:
-  List<DocumentSnapshot> searchResults = [];
-  List<DocumentSnapshot> allData = [];
+  List<DocumentSnapshot> _searchResults = [];
+  List<DocumentSnapshot> _allData = [];
 
   @override
   void initState() {
     super.initState();
-    streamManager = StreamManager();
+    _streamManager = StreamManager();
 
     // Ambil semua data hewan saat inisialisasi
-    streamManager.getStream('hewan').listen((data) {
+    _streamManager.getStream('hewan').listen((data) {
       setState(() {
-        allData = data.docs;
+        _allData = data.docs;
       });
     });
   }
@@ -40,16 +40,16 @@ class _MobileAnimalState extends State<MobileAnimal> {
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
       // Gunakan fungsi pencarian dari StreamManager
-      streamManager.searchData(keyword, 'hewan').listen((data) {
+      _streamManager.searchData(keyword, 'hewan').listen((data) {
         setState(() {
           // Perbarui hasil pencarian
-          searchResults = data.docs;
+          _searchResults = data.docs;
         });
       });
     } else {
       // Kosongkan hasil pencarian jika keyword kosong
       setState(() {
-        searchResults = [];
+        _searchResults = [];
       });
     }
   }
@@ -71,7 +71,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(
-                      value); // Panggil fungsi pencarian saat teks berubah
+                      value); // Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: Icon(Icons.search, size: 28),
               ),
@@ -80,7 +80,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
               // Tampilan semua data
               if (_searchController.text.isEmpty)
                 StreamBuilder<List<DocumentSnapshot>>(
-                  stream: Stream.value(allData),
+                  stream: Stream.value(_allData),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       /// Menampilkan shimmer saat masih memproses data
@@ -144,7 +144,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
               // Tampilan hasil pencarian
               if (_searchController.text.isNotEmpty)
                 StreamBuilder<List<DocumentSnapshot>>(
-                  stream: Stream.value(searchResults),
+                  stream: Stream.value(_searchResults),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       /// Menampilkan shimmer saat masih memproses data
