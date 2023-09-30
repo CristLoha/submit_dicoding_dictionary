@@ -19,15 +19,24 @@ class _MobileAnimalState extends State<MobileAnimal> {
   StreamManager streamManager = StreamManager();
   TextEditingController _searchController = TextEditingController();
 
-  /// variabel untuk menyimpan hasil pencarian:
+  /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> searchResults = [];
+  List<DocumentSnapshot> allData = [];
+
   @override
   void initState() {
     super.initState();
     streamManager = StreamManager();
+
+    // Ambil semua data hewan saat inisialisasi
+    streamManager.getStream('hewan').listen((data) {
+      setState(() {
+        allData = data.docs;
+      });
+    });
   }
 
-  ///fungsi _performSearch() untuk melakukan pencarian:
+  /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
       // Gunakan fungsi pencarian dari StreamManager
@@ -67,67 +76,134 @@ class _MobileAnimalState extends State<MobileAnimal> {
                 prefixIcon: Icon(Icons.search, size: 28),
               ),
               30.heightBox,
-              StreamBuilder<List<DocumentSnapshot>>(
-                stream: Stream.value(searchResults),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    /// Menampilkan shimmer saat masih memproses data
-                    return const ShimmerLoadingList();
-                  } else if (snapshot.hasData) {
-                    /// Setelah data diterima, maka data akan ditampilkan
-                    List<DocumentSnapshot> docs = snapshot.data!;
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: docs.length,
-                      itemBuilder: (context, index) {
-                        String title = docs[index]['kataIndo'];
-                        String subtitle = docs[index]['kataSahu'];
-                        return Container(
-                          padding: const EdgeInsets.all(6),
-                          margin: const EdgeInsets.only(bottom: 15),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: whiteColor,
-                          ),
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return DetailPage();
-                                  },
-                                ),
-                              );
-                            },
-                            title: Text(
-                              title,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 20, fontWeight: medium),
+
+              // Tampilan semua data
+              if (_searchController.text.isEmpty)
+                StreamBuilder<List<DocumentSnapshot>>(
+                  stream: Stream.value(allData),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      /// Menampilkan shimmer saat masih memproses data
+                      return const ShimmerLoadingList();
+                    } else if (snapshot.hasData) {
+                      /// Setelah data diterima, maka data akan ditampilkan
+                      List<DocumentSnapshot> docs = snapshot.data!;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: docs.length,
+                        itemBuilder: (context, index) {
+                          String title = docs[index]['kataIndo'];
+                          String subtitle = docs[index]['kataSahu'];
+                          return Container(
+                            padding: const EdgeInsets.all(6),
+                            margin: const EdgeInsets.only(bottom: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: whiteColor,
                             ),
-                            subtitle: Text(
-                              subtitle,
-                              style: greyTextStyle.copyWith(fontSize: 18),
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return DetailPage();
+                                    },
+                                  ),
+                                );
+                              },
+                              title: Text(
+                                title,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 20, fontWeight: medium),
+                              ),
+                              subtitle: Text(
+                                subtitle,
+                                style: greyTextStyle.copyWith(fontSize: 18),
+                              ),
+                              trailing: FaIcon(
+                                FontAwesomeIcons.solidBookmark,
+                                color: shamrockGreen,
+                              ),
                             ),
-                            trailing: FaIcon(
-                              FontAwesomeIcons.solidBookmark,
-                              color: shamrockGreen,
+                          );
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    } else {
+                      return const Center(
+                        child: Text('Tidak ada data yang ditemukan.'),
+                      );
+                    }
+                  },
+                ),
+
+              // Tampilan hasil pencarian
+              if (_searchController.text.isNotEmpty)
+                StreamBuilder<List<DocumentSnapshot>>(
+                  stream: Stream.value(searchResults),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      /// Menampilkan shimmer saat masih memproses data
+                      return const ShimmerLoadingList();
+                    } else if (snapshot.hasData) {
+                      /// Setelah data diterima, maka data akan ditampilkan
+                      List<DocumentSnapshot> docs = snapshot.data!;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: docs.length,
+                        itemBuilder: (context, index) {
+                          String title = docs[index]['kataIndo'];
+                          String subtitle = docs[index]['kataSahu'];
+                          return Container(
+                            padding: const EdgeInsets.all(6),
+                            margin: const EdgeInsets.only(bottom: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: whiteColor,
                             ),
-                          ),
-                        );
-                      },
-                    );
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: ${snapshot.error}'),
-                    );
-                  } else {
-                    return const Center(
-                      child: Text('Masukkan kata kunci untuk mencari.'),
-                    );
-                  }
-                },
-              ),
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return DetailPage();
+                                    },
+                                  ),
+                                );
+                              },
+                              title: Text(
+                                title,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 20, fontWeight: medium),
+                              ),
+                              subtitle: Text(
+                                subtitle,
+                                style: greyTextStyle.copyWith(fontSize: 18),
+                              ),
+                              trailing: FaIcon(
+                                FontAwesomeIcons.solidBookmark,
+                                color: shamrockGreen,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    } else {
+                      return const Center(
+                        child: Text('Tidak ada hasil pencarian.'),
+                      );
+                    }
+                  },
+                ),
             ],
           ),
         ),
