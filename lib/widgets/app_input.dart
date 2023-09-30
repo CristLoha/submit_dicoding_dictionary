@@ -8,6 +8,7 @@ class AppInput extends StatelessWidget {
   final bool? obscureText;
   final String? initialValue;
   final Color? colorBorder;
+  final Function(String)? onChanged;
 
   const AppInput({
     Key? key,
@@ -17,11 +18,13 @@ class AppInput extends StatelessWidget {
     this.obscureText,
     this.initialValue,
     this.colorBorder,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       cursorColor: darkBlue,
