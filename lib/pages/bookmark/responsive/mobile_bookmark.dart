@@ -55,7 +55,7 @@ class _MobileBookmarkState extends State<MobileBookmark> {
       backgroundColor: lightBackgroundColor,
       body: bookmarkedIds.isEmpty
           ? const Center(
-              child: Text('Belum ada data.'),
+              child: Text('Belum ada data yang diarsip'),
             )
           : ListView.builder(
               padding: const EdgeInsets.symmetric(
