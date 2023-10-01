@@ -3,12 +3,14 @@ import 'package:shimmer/shimmer.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
 class ShimmerLoadingList extends StatelessWidget {
-  const ShimmerLoadingList({super.key});
+  final int itemCount;
+
+  const ShimmerLoadingList({required this.itemCount, super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
+      itemCount: itemCount,
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return Shimmer.fromColors(

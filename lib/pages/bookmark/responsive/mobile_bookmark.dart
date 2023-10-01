@@ -70,7 +70,9 @@ class _MobileBookmarkState extends State<MobileBookmark> {
                 .get(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const ShimmerLoadingList();
+                return ShimmerLoadingList(
+                  itemCount: bookmarkedId.length,
+                );
               }
               if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
@@ -88,16 +90,14 @@ class _MobileBookmarkState extends State<MobileBookmark> {
                   ),
                   child: ListTile(
                     title: Text(
-                      documentData?['kataIndo'] ??
-                          '', // Ganti dengan field yang sesuai
+                      documentData?['kataIndo'] ?? '',
                       style: blackTextStyle.copyWith(
                         fontSize: 20,
                         fontWeight: medium,
                       ),
                     ),
                     subtitle: Text(
-                      documentData?['kataSahu'] ??
-                          '', // Ganti dengan field yang sesuai
+                      documentData?['kataSahu'] ?? '',
                       style: greyTextStyle.copyWith(fontSize: 18),
                     ),
                     trailing: IconButton(

@@ -124,8 +124,12 @@ class _MobileAnimalState extends State<MobileAnimal> {
                   stream: Stream.value(_allData),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
+                      List<DocumentSnapshot> docs = snapshot.data!;
+
                       /// Menampilkan shimmer saat masih memproses data
-                      return const ShimmerLoadingList();
+                      return ShimmerLoadingList(
+                        itemCount: docs.length,
+                      );
                     } else if (snapshot.hasData) {
                       /// Setelah data diterima, maka data akan ditampilkan
                       List<DocumentSnapshot> docs = snapshot.data!;
@@ -198,8 +202,12 @@ class _MobileAnimalState extends State<MobileAnimal> {
                   stream: Stream.value(_searchResults),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
+                      List<DocumentSnapshot> docs = snapshot.data!;
+
                       /// Menampilkan shimmer saat masih memproses data
-                      return const ShimmerLoadingList();
+                      return ShimmerLoadingList(
+                        itemCount: docs.length,
+                      );
                     } else if (snapshot.hasData) {
                       /// Setelah data diterima, maka data akan ditampilkan
                       List<DocumentSnapshot> docs = snapshot.data!;
