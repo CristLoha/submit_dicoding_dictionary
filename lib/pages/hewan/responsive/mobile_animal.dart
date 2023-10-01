@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/models/stream_manager.dart';
 import 'package:submit_dicoding_dictionary/pages/detail_hewan/detail_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
@@ -19,6 +20,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
+  List<String> _favoriteIds = []; // Daftar ID dokumen favorit
   /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> _searchResults = [];
   List<DocumentSnapshot> _allData = [];
@@ -27,7 +29,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
   void initState() {
     super.initState();
     _streamManager = StreamManager();
-
+    _loadFavoriteIds(); // Muat daftar ID favorit saat aplikasi dimuat
     // Ambil semua data hewan saat inisialisasi
     _streamManager.getStream('hewan').listen((data) {
       setState(() {
@@ -61,6 +63,38 @@ class _MobileAnimalState extends State<MobileAnimal> {
     }
   }
 
+  // Fungsi untuk memuat daftar ID favorit dari SharedPreferences
+  Future<void> _loadFavoriteIds() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      // Baca daftar ID favorit dari SharedPreferences
+      _favoriteIds = prefs.getStringList('favorite_ids') ?? [];
+    });
+  }
+
+  // Fungsi untuk menambah atau menghapus ID favorit dari daftar
+  void _toggleFavoriteStatus(String documentId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      if (_favoriteIds.contains(documentId)) {
+        // Hapus ID dari daftar favorit jika sudah ada
+        _favoriteIds.remove(documentId);
+      } else {
+        // Tambahkan ID ke daftar favorit jika belum ada
+        _favoriteIds.add(documentId);
+      }
+
+      // Simpan daftar ID favorit yang baru ke SharedPreferences
+      prefs.setStringList('favorite_ids', _favoriteIds);
+    });
+  }
+
+  // Fungsi untuk mengecek apakah dokumen dengan ID tertentu adalah favorit
+  bool _isFavorite(String documentId) {
+    return _favoriteIds.contains(documentId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +118,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
               ),
               30.heightBox,
 
-              /// Tampilan semua data
+              /// Tampilkan semua data
               if (_searchController.text.isEmpty)
                 StreamBuilder<List<DocumentSnapshot>>(
                   stream: Stream.value(_allData),
@@ -102,6 +136,8 @@ class _MobileAnimalState extends State<MobileAnimal> {
                         itemBuilder: (context, index) {
                           String title = docs[index]['kataIndo'];
                           String subtitle = docs[index]['kataSahu'];
+                          String documentId = docs[index].id;
+                          bool isFavorite = _isFavorite(documentId);
                           return Container(
                             padding: const EdgeInsets.all(6),
                             margin: const EdgeInsets.only(bottom: 15),
@@ -131,9 +167,18 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                 subtitle,
                                 style: greyTextStyle.copyWith(fontSize: 18),
                               ),
-                              trailing: FaIcon(
-                                FontAwesomeIcons.solidBookmark,
-                                color: shamrockGreen,
+                              trailing: IconButton(
+                                onPressed: () {
+                                  _toggleFavoriteStatus(documentId);
+                                  print('Data tersimpan');
+                                },
+                                icon: FaIcon(
+                                  isFavorite
+                                      ? FontAwesomeIcons.solidBookmark
+                                      : FontAwesomeIcons.bookmark,
+                                  color:
+                                      isFavorite ? Colors.green : Colors.grey,
+                                ),
                               ),
                             ),
                           );
