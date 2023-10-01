@@ -70,13 +70,10 @@ class _MobileBookmarkState extends State<MobileBookmark> {
       SnackBar(
         content: Text(
           'Semua arsip telah dihapus',
-          style: TextStyle(
-            color: Colors.white, // Warna teks notifikasi
-            fontSize: 16, // Ukuran teks notifikasi
-          ),
+          style: blackTextStyle.copyWith(fontSize: 16),
         ),
-        backgroundColor: Colors.green, // Warna latar belakang notifikasi
-        duration: Duration(seconds: 2), // Durasi tampil notifikasi
+        backgroundColor: whiteColor,
+        duration: const Duration(seconds: 1),
       ),
     );
   }
