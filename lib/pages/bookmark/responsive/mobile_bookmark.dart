@@ -53,70 +53,74 @@ class _MobileBookmarkState extends State<MobileBookmark> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: lightBackgroundColor,
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 30,
-        ),
-        itemCount: bookmarkedIds.length,
-        itemBuilder: (context, index) {
-          String bookmarkedId = bookmarkedIds[index];
+      body: bookmarkedIds.isEmpty
+          ? const Center(
+              child: Text('Belum ada data.'),
+            )
+          : ListView.builder(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 30,
+              ),
+              itemCount: bookmarkedIds.length,
+              itemBuilder: (context, index) {
+                String bookmarkedId = bookmarkedIds[index];
 
-          /// Menampilkan dokumen yang sesuai berdasarkan ID yang ditempatkan di bookmarkedIds
-          return FutureBuilder<DocumentSnapshot>(
-            future: FirebaseFirestore.instance
-                .collection('kamus')
-                .doc(bookmarkedId)
-                .get(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return ShimmerLoadingList(
-                  itemCount: bookmarkedId.length,
+                /// Menampilkan dokumen yang sesuai berdasarkan ID yang ditempatkan di bookmarkedIds
+                return FutureBuilder<DocumentSnapshot>(
+                  future: FirebaseFirestore.instance
+                      .collection('kamus')
+                      .doc(bookmarkedId)
+                      .get(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return ShimmerLoadingList(
+                        itemCount: bookmarkedId.length,
+                      );
+                    }
+                    if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    }
+
+                    if (snapshot.hasData) {
+                      final documentData = snapshot.data;
+
+                      return Container(
+                        padding: const EdgeInsets.all(6),
+                        margin: const EdgeInsets.only(bottom: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: whiteColor,
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            documentData?['kataIndo'] ?? '',
+                            style: blackTextStyle.copyWith(
+                              fontSize: 20,
+                              fontWeight: medium,
+                            ),
+                          ),
+                          subtitle: Text(
+                            documentData?['kataSahu'] ?? '',
+                            style: greyTextStyle.copyWith(fontSize: 18),
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {
+                              _toggleFavoriteStatus(bookmarkedId);
+                            },
+                            icon: FaIcon(
+                              FontAwesomeIcons.solidBookmark,
+                              color: shamrockGreen,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    return const SizedBox();
+                  },
                 );
-              }
-              if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              }
-
-              if (snapshot.hasData) {
-                final documentData = snapshot.data;
-
-                return Container(
-                  padding: const EdgeInsets.all(6),
-                  margin: const EdgeInsets.only(bottom: 15),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: whiteColor,
-                  ),
-                  child: ListTile(
-                    title: Text(
-                      documentData?['kataIndo'] ?? '',
-                      style: blackTextStyle.copyWith(
-                        fontSize: 20,
-                        fontWeight: medium,
-                      ),
-                    ),
-                    subtitle: Text(
-                      documentData?['kataSahu'] ?? '',
-                      style: greyTextStyle.copyWith(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {
-                        _toggleFavoriteStatus(bookmarkedId);
-                      },
-                      icon: FaIcon(
-                        FontAwesomeIcons.solidBookmark,
-                        color: shamrockGreen,
-                      ),
-                    ),
-                  ),
-                );
-              }
-              return const SizedBox();
-            },
-          );
-        },
-      ),
+              },
+            ),
     );
   }
 }
