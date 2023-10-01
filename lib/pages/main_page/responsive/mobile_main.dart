@@ -32,9 +32,6 @@ class _MobileMainState extends State<MobileMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Kamus Bahasa Sahu'),
-      ),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 6,
         color: whiteColor,

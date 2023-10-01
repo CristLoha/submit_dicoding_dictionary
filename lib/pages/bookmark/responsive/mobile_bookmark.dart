@@ -13,7 +13,13 @@ class MobileBookmark extends StatefulWidget {
 }
 
 class _MobileBookmarkState extends State<MobileBookmark> {
-  List<String> bookmarkedIds = [];
+  List<String> _bookmarkedIds = [];
+
+  List<String> get bookmarkedIds => _bookmarkedIds;
+
+  void setBookmarkedIds(List<String> newBookmarkedIds) {
+    _bookmarkedIds = newBookmarkedIds;
+  }
 
   @override
   void initState() {
@@ -27,7 +33,7 @@ class _MobileBookmarkState extends State<MobileBookmark> {
   void loadBookmarkedIds() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      bookmarkedIds = prefs.getStringList('favorite_ids') ?? [];
+      _bookmarkedIds = prefs.getStringList('favorite_ids') ?? [];
     });
   }
 
@@ -49,9 +55,47 @@ class _MobileBookmarkState extends State<MobileBookmark> {
     });
   }
 
+  void _deleteAllBookmarks() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      bookmarkedIds.clear(); // Menghapus semua ID favorit
+    });
+
+    /// Menyimpan daftar ID favorit yang baru ke SharedPreferences (kosong)
+    prefs.remove('favorite_ids');
+
+    // Menampilkan notifikasi
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Semua arsip telah dihapus',
+          style: TextStyle(
+            color: Colors.white, // Warna teks notifikasi
+            fontSize: 16, // Ukuran teks notifikasi
+          ),
+        ),
+        backgroundColor: Colors.green, // Warna latar belakang notifikasi
+        duration: Duration(seconds: 2), // Durasi tampil notifikasi
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Arsip'),
+        centerTitle: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              _deleteAllBookmarks(); // Memanggil fungsi untuk menghapus semua arsip
+            },
+            icon: Icon(Icons.delete),
+          ),
+        ],
+      ),
       backgroundColor: lightBackgroundColor,
       body: bookmarkedIds.isEmpty
           ? const Center(

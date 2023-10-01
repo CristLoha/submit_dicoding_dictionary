@@ -22,10 +22,12 @@ class MobileHome extends StatelessWidget {
             children: [
               30.heightBox,
               titleKategori(),
-              30.heightBox,
+              20.heightBox,
               Expanded(
                 child: GridView.builder(
-                  padding: const EdgeInsets.only(bottom: 20, top: 30),
+                  padding: const EdgeInsets.only(
+                    bottom: 20,
+                  ),
                   scrollDirection: Axis.vertical,
                   itemCount: 8,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
