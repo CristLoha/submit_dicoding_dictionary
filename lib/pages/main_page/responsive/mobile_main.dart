@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
+
 import '../../bookmark/bookmark_page.dart';
 import '../../home/home_page.dart';
 import '../../search/search_page.dart';
@@ -14,93 +14,73 @@ class MobileMain extends StatefulWidget {
 }
 
 class _MobileMainState extends State<MobileMain> {
-  int _selectedPageIndex = 0;
+  int _selectedIndex = 0;
 
+  // Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
   final List<Widget> _pages = const [
     HomePage(),
     SearchPage(),
     BookmarkPage(),
   ];
 
-  final List<String> _pageNames = const [
-    'Beranda',
-    'Pencarian',
-    'Arsip',
-  ];
-  final List<List<dynamic>> _pageData = [
-    // Data halaman 1 (Beranda)
-    ['Kamus Bahasa Sahu', false, null],
-
-    // Data halaman 2 (Pencarian)
-    ['Pencarian', false, null],
-
-    // Data halaman 3 (Arsip)
-    ['Arsip', true, Icons.delete],
-  ];
-
-  final List<IconData> _pageIcons = const [
-    FontAwesomeIcons.house,
-    FontAwesomeIcons.magnifyingGlass,
-    FontAwesomeIcons.bookBookmark,
-  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
-        title: Text(
-          _pageData[_selectedPageIndex]
-              [0], // Menampilkan nama halaman berdasarkan indeks
-          style: whiteTextStyle.copyWith(
-            fontWeight: semiBold,
-            fontSize: 20,
-          ),
-        ),
+        title: const Text('Kamus Bahasa Sahu'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: shamrockGreen,
-              ),
-              child: Center(
-                child: Text(
-                  'Menu',
-                  style: whiteTextStyle.copyWith(
-                    fontSize: 24,
-                    fontWeight: bold,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 6,
+        color: whiteColor,
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          elevation: 0,
+          backgroundColor: whiteColor,
+          selectedItemColor: shamrockGreen,
+          unselectedItemColor: blackColor,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedLabelStyle: shamrockGreenTextStyle.copyWith(
+            fontSize: 10,
+            fontWeight: medium,
+          ),
+          unselectedLabelStyle: blackTextStyle.copyWith(
+            fontSize: 10,
+            fontWeight: medium,
+          ),
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          items: const [
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: FaIcon(
+                    FontAwesomeIcons.house,
                   ),
                 ),
-              ),
-            ),
-            for (int i = 0; i < _pages.length; i++)
-              ListTile(
-                leading: FaIcon(
-                  _pageIcons[i],
-
-                  /// Menggunakan ikon sesuai dengan indeks halaman
-                  size: 20,
+                label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: FaIcon(FontAwesomeIcons.magnifyingGlass),
                 ),
-                title: Text(
-                  _pageNames[i],
-                  style: blackTextStyle,
+                label: 'Pencarian'),
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: FaIcon(FontAwesomeIcons.bookBookmark),
                 ),
-
-                /// Menggunakan  nama berdasarkan nama halaman
-                onTap: () {
-                  setState(() {
-                    _selectedPageIndex = i;
-                  });
-                  Navigator.pop(context); // Menutup menu drawer
-                },
-              ),
+                label: 'Arsip'),
           ],
         ),
       ),
-      body: _pages[_selectedPageIndex], // Menampilkan halaman yang dipilih
+      body: _pages[_selectedIndex],
     );
   }
 }
