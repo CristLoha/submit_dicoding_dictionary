@@ -102,7 +102,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
         title: const Text('Hewan'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -170,15 +170,13 @@ class _MobileAnimalState extends State<MobileAnimal> {
                               trailing: IconButton(
                                 onPressed: () {
                                   _toggleFavoriteStatus(documentId);
-                                  print('Data tersimpan');
                                 },
                                 icon: FaIcon(
-                                  isFavorite
-                                      ? FontAwesomeIcons.solidBookmark
-                                      : FontAwesomeIcons.bookmark,
-                                  color:
-                                      isFavorite ? Colors.green : Colors.grey,
-                                ),
+                                    isFavorite
+                                        ? FontAwesomeIcons.solidBookmark
+                                        : FontAwesomeIcons.bookmark,
+                                    color:
+                                        isFavorite ? shamrockGreen : greyColor),
                               ),
                             ),
                           );
@@ -219,6 +217,8 @@ class _MobileAnimalState extends State<MobileAnimal> {
                         itemBuilder: (context, index) {
                           String title = docs[index]['kataIndo'];
                           String subtitle = docs[index]['kataSahu'];
+                          String documentId = docs[index].id;
+                          bool isFavorite = _isFavorite(documentId);
                           return Container(
                             padding: const EdgeInsets.all(6),
                             margin: const EdgeInsets.only(bottom: 15),
@@ -249,11 +249,15 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                 style: greyTextStyle.copyWith(fontSize: 18),
                               ),
                               trailing: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _toggleFavoriteStatus(documentId);
+                                },
                                 icon: FaIcon(
-                                  FontAwesomeIcons.solidBookmark,
-                                  color: shamrockGreen,
-                                ),
+                                    isFavorite
+                                        ? FontAwesomeIcons.solidBookmark
+                                        : FontAwesomeIcons.bookmark,
+                                    color:
+                                        isFavorite ? shamrockGreen : greyColor),
                               ),
                             ),
                           );
