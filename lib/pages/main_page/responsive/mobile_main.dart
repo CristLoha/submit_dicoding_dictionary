@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import '../../bookmark/bookmark_page.dart';
 import '../../home/home_page.dart';
@@ -56,36 +57,6 @@ class _MobileMainState extends State<MobileMain> {
             fontSize: 20,
           ),
         ),
-        actions: _pageData[_selectedPageIndex][2] != null
-            ? [
-                IconButton(
-                  onPressed: () {
-                    if (_pageData[_selectedPageIndex][2] ==
-                        Icons.local_convenience_store_sharp) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Ini halaman Pencarian'),
-                          duration: Duration(seconds: 1),
-                        ),
-                      );
-                    } else if (_pageData[_selectedPageIndex][2] ==
-                        Icons.delete) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Ini halaman Arsip'),
-                          duration: Duration(seconds: 1),
-                        ),
-                      );
-                    }
-                  },
-                  icon: Icon(
-                    _pageData[_selectedPageIndex]
-                        [2], // Menampilkan ikon berdasarkan indeks
-                    color: whiteColor,
-                  ),
-                ),
-              ]
-            : null,
       ),
       drawer: Drawer(
         child: ListView(

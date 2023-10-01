@@ -122,9 +122,12 @@ class _MobileAnimalState extends State<MobileAnimal> {
               if (_searchController.text.isEmpty)
                 StreamBuilder<List<DocumentSnapshot>>(
                   stream: Stream.value(_allData),
-                  builder: (context, snapshot) {
+                  builder: (
+                    context,
+                    snapshot,
+                  ) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      List<DocumentSnapshot> docs = snapshot.data!;
+                      List<DocumentSnapshot> docs = snapshot.data ?? [];
 
                       /// Menampilkan shimmer saat masih memproses data
                       return ShimmerLoadingList(
