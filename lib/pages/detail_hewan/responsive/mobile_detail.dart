@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share/share.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/button_transparant.dart';
+import 'package:submit_dicoding_dictionary/widgets/text_underline.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/example_widget.dart';
 
@@ -50,6 +51,8 @@ class MobileDetail extends StatelessWidget {
               String kataIndo = data['kataIndo'] as String;
               String kataSahu = data['kataSahu'] as String;
               String contohSahu = data['contohSahu'] as String;
+              String contohIndo = data['contohIndo'] as String;
+              String definisi = data['definisi'] as String;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -73,11 +76,10 @@ class MobileDetail extends StatelessWidget {
                                 fontWeight: semiBold,
                               ),
                             ),
-                            Text(
-                              kataSahu,
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 16,
-                              ),
+                            UnderlineText(
+                              text: kataSahu,
+                              color: whiteColor,
+                              fontSize: 20,
                             ),
                             20.heightBox,
                             Row(
@@ -103,7 +105,8 @@ class MobileDetail extends StatelessWidget {
                                 ButtonTransparant(
                                   onTap: () {
                                     Share.share(
-                                        "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: \nDefinisi: ");
+                                        "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: $contohSahu yang artinya "
+                                        " \nDefinisi: ");
                                   },
                                   icon: EvaIcons.shareOutline,
                                 ),
@@ -124,9 +127,9 @@ class MobileDetail extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         20.heightBox,
-                        const ExampleWidget(
+                        ExampleWidget(
                           title: 'Contoh Kalimat [ID]',
-                          subtitle: 'contohkalimat',
+                          subtitle: contohIndo,
                         ),
                         20.heightBox,
                         ExampleWidget(
@@ -134,9 +137,9 @@ class MobileDetail extends StatelessWidget {
                           subtitle: contohSahu,
                         ),
                         20.heightBox,
-                        const ExampleWidget(
+                        ExampleWidget(
                           title: 'Definisi',
-                          subtitle: 'definisi',
+                          subtitle: definisi,
                         ),
                       ],
                     ),

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
 class UnderlineText extends StatelessWidget {
   final String text;
-
+  final double fontSize;
+  final Color? color;
   const UnderlineText({
     Key? key,
     required this.text,
+    this.fontSize = 16,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -17,7 +21,7 @@ class UnderlineText extends StatelessWidget {
         RegExp(r'_\w'),
         (m) => '${m.group(0)![1]}̲',
       ),
-      style: const TextStyle(fontSize: 16),
+      style: TextStyle(fontSize: fontSize, color: color ?? blackColor),
     );
   }
 }

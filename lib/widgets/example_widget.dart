@@ -54,7 +54,7 @@ class ExampleWidget extends StatelessWidget {
                 ),
               ],
             ),
-            20.heightBox,
+            5.heightBox,
             UnderlineText(
               text: subtitle,
             )
