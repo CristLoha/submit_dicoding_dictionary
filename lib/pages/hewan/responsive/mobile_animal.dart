@@ -159,7 +159,9 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return const DetailPage();
+                                        return DetailPage(
+                                          data: documentId,
+                                        );
                                       },
                                     ),
                                   );
@@ -230,6 +232,8 @@ class _MobileAnimalState extends State<MobileAnimal> {
                           String subtitle = docs[index]['kataSahu'];
                           String documentId = docs[index].id;
                           bool isFavorite = _isFavorite(documentId);
+                          DocumentSnapshot documentSnapshot = docs[index];
+
                           return Container(
                             padding: const EdgeInsets.all(6),
                             margin: const EdgeInsets.only(bottom: 15),
@@ -244,7 +248,10 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return const DetailPage();
+                                        return DetailPage(
+                                          data:
+                                              documentId, // Mengirim ID dokumen
+                                        );
                                       },
                                     ),
                                   );

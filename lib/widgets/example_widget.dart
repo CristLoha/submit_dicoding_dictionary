@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
+import 'package:submit_dicoding_dictionary/widgets/text_underline.dart';
 import '../shared/theme.dart';
 
 class ExampleWidget extends StatelessWidget {
@@ -54,10 +55,9 @@ class ExampleWidget extends StatelessWidget {
               ],
             ),
             20.heightBox,
-            Text(
-              subtitle,
-              style: blackTextStyle.copyWith(fontSize: 16),
-            ),
+            UnderlineText(
+              text: subtitle,
+            )
           ],
         ),
       ),

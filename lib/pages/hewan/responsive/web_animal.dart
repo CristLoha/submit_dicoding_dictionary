@@ -44,11 +44,11 @@ class WebAnimal extends StatelessWidget {
             ),
             child: ListTile(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return const DetailPage();
-                  },
-                ));
+                // Navigator.push(context, MaterialPageRoute(
+                //   builder: (context) {
+                //     return const DetailPage();
+                //   },
+                // ));
               },
               title: Text(
                 'Sedap',

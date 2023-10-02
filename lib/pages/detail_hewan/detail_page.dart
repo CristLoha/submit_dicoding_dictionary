@@ -4,13 +4,16 @@ import 'responsive/mobile_detail.dart';
 import 'responsive/web_detail.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+  final String? data; // Tambahkan parameter untuk ID dokumen
+  const DetailPage({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: ResponsiveLayout(
-        mobileBody: MobileDetail(),
+        mobileBody: MobileDetail(
+          data: data,
+        ),
         webBody: WebDetail(),
       ),
     );
