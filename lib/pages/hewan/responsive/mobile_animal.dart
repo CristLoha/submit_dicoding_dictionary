@@ -21,7 +21,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
-  List<String> _favoriteIds = []; // Daftar ID dokumen favorit
+  List<String> _favoriteIds = []; //. Daftar ID dokumen favorit
   /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> _searchResults = [];
   List<DocumentSnapshot> _allData = [];
@@ -155,8 +155,8 @@ class _MobileAnimalState extends State<MobileAnimal> {
                             ),
                             child: ListTile(
                               title: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
+                                onTap: () async {
+                                  final shouldReloadData = await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
@@ -166,6 +166,12 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                       },
                                     ),
                                   );
+
+                                  /// Memeriksa apakah ada perubahan data yang perlu dimuat ulang
+                                  if (shouldReloadData == true) {
+                                    /// Memuat ulang data preferensi jika terjadi perubahan
+                                    _loadFavoriteIds();
+                                  }
                                 },
                                 child: UnderlineText(
                                   text: title,

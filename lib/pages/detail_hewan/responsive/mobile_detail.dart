@@ -4,21 +4,73 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share/share.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/button_transparant.dart';
 import 'package:submit_dicoding_dictionary/widgets/text_underline.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/example_widget.dart';
 
-class MobileDetail extends StatelessWidget {
+class MobileDetail extends StatefulWidget {
   final dynamic data;
 
   const MobileDetail({Key? key, required this.data}) : super(key: key);
+
+  @override
+  State<MobileDetail> createState() => _MobileDetailState();
+}
+
+class _MobileDetailState extends State<MobileDetail> {
+  List<String> _favoriteIds = []; //. Daftar ID dokumen favorit
+  // Fungsi untuk memuat daftar ID favorit dari SharedPreferences
+  Future<void> _loadFavoriteIds() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _favoriteIds = prefs.getStringList('favorite_ids') ?? [];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFavoriteIds();
+  }
+
+  /// Fungsi untuk menambah atau menghapus ID favorit dari daftar
+  void _toggleFavoriteStatus(String documentId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      if (_favoriteIds.contains(documentId)) {
+        /// Hapus ID dari daftar favorit jika sudah ada
+        _favoriteIds.remove(documentId);
+      } else {
+        /// Tambahkan ID ke daftar favorit jika belum ada
+        _favoriteIds.add(documentId);
+      }
+
+      /// Simpan daftar ID favorit yang baru ke SharedPreferences
+      prefs.setStringList('favorite_ids', _favoriteIds);
+    });
+  }
+
+  /// Fungsi untuk mengecek apakah dokumen dengan ID tertentu adalah favorit
+  bool _isFavorite(String documentId) {
+    return _favoriteIds.contains(documentId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context,
+                true); // Kembali ke halaman sebelumnya dengan status perubahan
+          },
+        ),
         iconTheme: IconThemeData(color: whiteColor),
         title: const Text('Kamus Bahasa Sahu'),
         titleTextStyle: whiteTextStyle.copyWith(
@@ -29,8 +81,10 @@ class MobileDetail extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: FutureBuilder<DocumentSnapshot>(
-          future:
-              FirebaseFirestore.instance.collection('kamus').doc(data).get(),
+          future: FirebaseFirestore.instance
+              .collection('kamus')
+              .doc(widget.data)
+              .get(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Padding(
@@ -53,7 +107,7 @@ class MobileDetail extends StatelessWidget {
               String contohSahu = data['contohSahu'] as String;
               String contohIndo = data['contohIndo'] as String;
               String definisi = data['definisi'] as String;
-
+              bool isFavorite = _isFavorite(widget.data);
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -99,8 +153,13 @@ class MobileDetail extends StatelessWidget {
                                   icon: EvaIcons.copyOutline,
                                 ),
                                 ButtonTransparant(
-                                  onTap: () {},
-                                  icon: FontAwesomeIcons.bookmark,
+                                  ///INI UNTUK BOOKMARK
+                                  onTap: () {
+                                    _toggleFavoriteStatus(widget.data);
+                                  },
+                                  icon: isFavorite
+                                      ? FontAwesomeIcons.solidBookmark
+                                      : FontAwesomeIcons.bookmark,
                                 ),
                                 ButtonTransparant(
                                   onTap: () {
