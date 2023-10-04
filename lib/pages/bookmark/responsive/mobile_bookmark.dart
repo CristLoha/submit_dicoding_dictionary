@@ -58,24 +58,44 @@ class _MobileBookmarkState extends State<MobileBookmark> {
   void _deleteAllBookmarks() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    setState(() {
-      bookmarkedIds.clear(); // Menghapus semua ID favorit
-    });
+    if (bookmarkedIds.isNotEmpty) {
+      // Hanya menghapus data jika ada data yang akan dihapus
+      setState(() {
+        bookmarkedIds.clear(); // Menghapus semua ID favorit
+      });
 
-    /// Menyimpan daftar ID favorit yang baru ke SharedPreferences (kosong)
-    prefs.remove('favorite_ids');
+      /// Menyimpan daftar ID favorit yang baru ke SharedPreferences (kosong)
+      prefs.remove('favorite_ids');
 
-    // Menampilkan notifikasi
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Semua arsip telah dihapus',
-          style: blackTextStyle.copyWith(fontSize: 16),
+      // Menampilkan notifikasi jika ada data yang dihapus
+      /// ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Semua arsip telah dihapus.',
+            style: blackTextStyle.copyWith(fontSize: 16),
+          ),
+          backgroundColor: whiteColor,
+          duration: const Duration(seconds: 1),
         ),
-        backgroundColor: whiteColor,
-        duration: const Duration(seconds: 1),
-      ),
-    );
+      );
+    } else {
+      /// Menampilkan pesan jika tidak ada data yang dihapus
+      /// ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          width: 255,
+          content: Text(
+            'Anda tidak memiliki data arsip.',
+            style: blackTextStyle,
+          ),
+          margin: const EdgeInsets.only(top: 30),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: whiteColor,
+          duration: const Duration(seconds: 1),
+        ),
+      );
+    }
   }
 
   @override
@@ -87,9 +107,10 @@ class _MobileBookmarkState extends State<MobileBookmark> {
         actions: [
           IconButton(
             onPressed: () {
-              _deleteAllBookmarks(); // Memanggil fungsi untuk menghapus semua arsip
+              /// Memanggil fungsi untuk menghapus semua arsip
+              _deleteAllBookmarks();
             },
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
           ),
         ],
       ),
