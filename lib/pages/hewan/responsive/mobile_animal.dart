@@ -30,8 +30,10 @@ class _MobileAnimalState extends State<MobileAnimal> {
   void initState() {
     super.initState();
     _streamManager = StreamManager();
-    _loadFavoriteIds(); // Muat daftar ID favorit saat aplikasi dimuat
-    // Ambil semua data hewan saat inisialisasi
+    _loadFavoriteIds();
+
+    /// Muat daftar ID favorit saat aplikasi dimuat
+    /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStream('hewan').listen((data) {
       setState(() {
         _allData = data.docs;
@@ -42,16 +44,16 @@ class _MobileAnimalState extends State<MobileAnimal> {
   /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
-      String lowercaseKeyword =
-          keyword.toLowerCase(); // Konversi keyword ke huruf kecil
+      String lowercaseKeyword = keyword.toLowerCase();
+
+      /// Konversi keyword ke huruf kecil
 
       setState(() {
         /// Filter data yang cocok dengan keyword dalam field 'kataIndo' atau 'kataSahu'
         _searchResults = _allData.where((document) {
-          String kataIndo = document['kataIndo']
-              .toLowerCase(); // Konversi data 'kataIndo' ke huruf kecil
-          String kataSahu = document['kataSahu']
-              .toLowerCase(); // Konversi data 'kataSahu' ke huruf kecil
+          /// Konversi ke huruf kecil
+          String kataIndo = document['kataIndo'].toLowerCase();
+          String kataSahu = document['kataSahu'].toLowerCase();
           return kataIndo.contains(lowercaseKeyword) ||
               kataSahu.contains(lowercaseKeyword);
         }).toList();
@@ -64,7 +66,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
     }
   }
 
-  // Fungsi untuk memuat daftar ID favorit dari SharedPreferences
+  /// Fungsi untuk memuat daftar ID favorit dari SharedPreferences
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -73,25 +75,25 @@ class _MobileAnimalState extends State<MobileAnimal> {
     });
   }
 
-  // Fungsi untuk menambah atau menghapus ID favorit dari daftar
+  /// Fungsi untuk menambah atau menghapus ID favorit dari daftar
   void _toggleFavoriteStatus(String documentId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
       if (_favoriteIds.contains(documentId)) {
-        // Hapus ID dari daftar favorit jika sudah ada
+        /// Hapus ID dari daftar favorit jika sudah ada
         _favoriteIds.remove(documentId);
       } else {
-        // Tambahkan ID ke daftar favorit jika belum ada
+        /// Tambahkan ID ke daftar favorit jika belum ada
         _favoriteIds.add(documentId);
       }
 
-      // Simpan daftar ID favorit yang baru ke SharedPreferences
+      /// Simpan daftar ID favorit yang baru ke SharedPreferences
       prefs.setStringList('favorite_ids', _favoriteIds);
     });
   }
 
-  // Fungsi untuk mengecek apakah dokumen dengan ID tertentu adalah favorit
+  /// Fungsi untuk mengecek apakah dokumen dengan ID tertentu adalah favorit
   bool _isFavorite(String documentId) {
     return _favoriteIds.contains(documentId);
   }
