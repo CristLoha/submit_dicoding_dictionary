@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-
 import '../../../widgets/app_input.dart';
-import '../../detail_hewan/detail_page.dart';
 
 class WebAnimal extends StatelessWidget {
   const WebAnimal({super.key});

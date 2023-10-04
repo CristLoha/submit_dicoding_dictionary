@@ -4,7 +4,7 @@ import 'responsive/mobile_detail.dart';
 import 'responsive/web_detail.dart';
 
 class DetailPage extends StatelessWidget {
-  final String? data; // Tambahkan parameter untuk ID dokumen
+  final String? data;
   const DetailPage({Key? key, required this.data}) : super(key: key);
 
   @override

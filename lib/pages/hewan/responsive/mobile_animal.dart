@@ -8,6 +8,7 @@ import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
 import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';
 import '../../../shared/theme.dart';
+import '../../../widgets/text_underline.dart';
 
 class MobileAnimal extends StatefulWidget {
   const MobileAnimal({super.key});
@@ -166,15 +167,15 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                     ),
                                   );
                                 },
-                                child: Text(
-                                  title,
-                                  style: blackTextStyle.copyWith(
-                                      fontSize: 20, fontWeight: medium),
+                                child: UnderlineText(
+                                  text: title,
+                                  fontSize: 20,
+                                  fontWeight: medium,
                                 ),
                               ),
-                              subtitle: Text(
-                                subtitle,
-                                style: greyTextStyle.copyWith(fontSize: 18),
+                              subtitle: UnderlineText(
+                                text: subtitle,
+                                fontSize: 18,
                               ),
                               trailing: IconButton(
                                 onPressed: () {
@@ -232,7 +233,6 @@ class _MobileAnimalState extends State<MobileAnimal> {
                           String subtitle = docs[index]['kataSahu'];
                           String documentId = docs[index].id;
                           bool isFavorite = _isFavorite(documentId);
-                          DocumentSnapshot documentSnapshot = docs[index];
 
                           return Container(
                             padding: const EdgeInsets.all(6),
@@ -249,22 +249,21 @@ class _MobileAnimalState extends State<MobileAnimal> {
                                     MaterialPageRoute(
                                       builder: (context) {
                                         return DetailPage(
-                                          data:
-                                              documentId, // Mengirim ID dokumen
+                                          data: documentId,
                                         );
                                       },
                                     ),
                                   );
                                 },
-                                child: Text(
-                                  title,
-                                  style: blackTextStyle.copyWith(
-                                      fontSize: 20, fontWeight: medium),
+                                child: UnderlineText(
+                                  text: title,
+                                  fontSize: 20,
+                                  fontWeight: medium,
                                 ),
                               ),
-                              subtitle: Text(
-                                subtitle,
-                                style: greyTextStyle.copyWith(fontSize: 18),
+                              subtitle: UnderlineText(
+                                text: subtitle,
+                                fontSize: 18,
                               ),
                               trailing: IconButton(
                                 onPressed: () {

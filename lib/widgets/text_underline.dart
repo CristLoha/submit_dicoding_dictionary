@@ -5,11 +5,13 @@ class UnderlineText extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color? color;
+  final FontWeight fontWeight;
   const UnderlineText({
     Key? key,
     required this.text,
     this.fontSize = 16,
     this.color,
+    this.fontWeight = FontWeight.normal,
   }) : super(key: key);
 
   @override
@@ -21,7 +23,11 @@ class UnderlineText extends StatelessWidget {
         RegExp(r'_\w'),
         (m) => '${m.group(0)![1]}̲',
       ),
-      style: TextStyle(fontSize: fontSize, color: color ?? blackColor),
+      style: TextStyle(
+        fontSize: fontSize,
+        color: color ?? blackColor,
+        fontWeight: fontWeight,
+      ),
     );
   }
 }
