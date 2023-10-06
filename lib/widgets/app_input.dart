@@ -8,6 +8,7 @@ class AppInput extends StatelessWidget {
   final bool? obscureText;
   final String? initialValue;
   final Color? colorBorder;
+  final String? hintText;
   final Function(String)? onChanged;
 
   const AppInput({
@@ -16,6 +17,7 @@ class AppInput extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText,
+    this.hintText = "Cari kata...",
     this.initialValue,
     this.colorBorder,
     this.onChanged,
@@ -31,7 +33,7 @@ class AppInput extends StatelessWidget {
       textCapitalization: TextCapitalization.sentences,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-        hintText: 'Cari kata...',
+        hintText: hintText,
         hintStyle: greyTextStyle,
         prefixIconColor: greyColor,
         prefixIcon: prefixIcon,

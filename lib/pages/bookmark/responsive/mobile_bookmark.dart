@@ -5,6 +5,8 @@ import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';
 
+import '../../detail_hewan/detail_page.dart';
+
 class MobileBookmark extends StatefulWidget {
   const MobileBookmark({super.key});
 
@@ -107,12 +109,20 @@ class _MobileBookmarkState extends State<MobileBookmark> {
     }
   }
 
+  /// Fungsi untuk memuat daftar ID favorit dari SharedPreferences
+  Future<void> _loadFavoriteIds() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      // Baca daftar ID favorit dari SharedPreferences
+      _bookmarkedIds = prefs.getStringList('favorite_ids') ?? [];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Arsip'),
-        centerTitle: false,
         actions: [
           IconButton(
             onPressed: () {
@@ -164,11 +174,36 @@ class _MobileBookmarkState extends State<MobileBookmark> {
                           color: whiteColor,
                         ),
                         child: ListTile(
-                          title: Text(
-                            documentData?['kataIndo'] ?? '',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 20,
-                              fontWeight: medium,
+                          title: GestureDetector(
+                            onTap: () async {
+                              String documentId =
+                                  bookmarkedId; // Ambil ID dari SharedPreferences
+
+                              // Navigasikan ke halaman detail dengan data yang sesuai
+                              final shouldReloadData = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return DetailPage(
+                                      data:
+                                          documentId, // Kirim ID sebagai parameter ke halaman detail
+                                    );
+                                  },
+                                ),
+                              );
+
+                              /// Memeriksa apakah ada perubahan data yang perlu dimuat ulang
+                              if (shouldReloadData == true) {
+                                /// Memuat ulang data preferensi jika terjadi perubahan
+                                _loadFavoriteIds();
+                              }
+                            },
+                            child: Text(
+                              documentData?['kataIndo'] ?? '',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 20,
+                                fontWeight: medium,
+                              ),
                             ),
                           ),
                           subtitle: Text(

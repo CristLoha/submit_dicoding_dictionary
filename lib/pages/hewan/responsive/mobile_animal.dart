@@ -114,6 +114,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
             children: [
               30.heightBox,
               AppInput(
+                hintText: "Cari kata hewan...",
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(
