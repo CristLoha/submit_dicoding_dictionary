@@ -9,6 +9,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      resizeToAvoidBottomInset: false,
       body: ResponsiveLayout(
         mobileBody: MobileMain(),
         webBody: WebMain(),

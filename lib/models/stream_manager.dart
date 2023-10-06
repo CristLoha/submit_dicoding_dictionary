@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class StreamManager {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Stream<QuerySnapshot> getStream(String isEqual) {
+  Stream<QuerySnapshot> getStreamKategori(String isEqual) {
     return _firestore
         .collection('kamus')
         .where('kategori', isEqualTo: isEqual)
@@ -15,5 +15,9 @@ class StreamManager {
         .collection('kamus')
         .where('kategori', isEqualTo: category)
         .snapshots();
+  }
+
+  Stream<QuerySnapshot> getStreamAllWords() {
+    return _firestore.collection('kamus').snapshots();
   }
 }

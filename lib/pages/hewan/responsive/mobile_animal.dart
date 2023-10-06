@@ -36,7 +36,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
 
     /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
-    _streamManager.getStream('hewan').listen((data) {
+    _streamManager.getStreamKategori('hewan').listen((data) {
       setState(() {
         _allData = data.docs;
       });
