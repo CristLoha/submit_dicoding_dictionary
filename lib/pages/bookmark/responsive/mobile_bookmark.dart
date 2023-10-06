@@ -77,6 +77,12 @@ class _MobileBookmarkState extends State<MobileBookmark> {
           ),
           backgroundColor: whiteColor,
           duration: const Duration(seconds: 1),
+          behavior: SnackBarBehavior.floating, // Posisi floating
+          margin: const EdgeInsets.only(
+            bottom: 90,
+            right: 60,
+            left: 60,
+          ),
         ),
       );
     } else {
@@ -84,15 +90,18 @@ class _MobileBookmarkState extends State<MobileBookmark> {
       /// ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          width: 255,
           content: Text(
             'Anda tidak memiliki data arsip.',
-            style: blackTextStyle,
+            style: blackTextStyle.copyWith(fontSize: 16),
           ),
-          margin: const EdgeInsets.only(top: 30),
-          behavior: SnackBarBehavior.floating,
           backgroundColor: whiteColor,
           duration: const Duration(seconds: 1),
+          behavior: SnackBarBehavior.floating, // Posisi floating
+          margin: const EdgeInsets.only(
+            bottom: 90,
+            right: 60,
+            left: 60,
+          ),
         ),
       );
     }
