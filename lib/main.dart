@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import 'pages/main_page/main_page.dart';
@@ -17,14 +15,11 @@ import 'firebase_options.dart';
 //   );
 // }
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); // Memastikan binding diinisialisasi
-  DartPluginRegistrant
-      .ensureInitialized(); // Memastikan plugin Dart diinisialisasi
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -117,8 +117,9 @@ class _MobileSearchState extends State<MobileSearch> {
               AppInput(
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
+
+                  /// Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),
