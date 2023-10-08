@@ -3,7 +3,8 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/button_transparant.dart';
@@ -164,8 +165,8 @@ class _MobileDetailState extends State<MobileDetail> {
                                 ButtonTransparant(
                                   onTap: () {
                                     Share.share(
-                                        "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: $contohSahu yang artinya "
-                                        " \nDefinisi: ");
+                                        "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: $contohSahu yang artinya $contohIndo "
+                                        " \nDefinisi dari $kataIndo, yaitu: $definisi");
                                   },
                                   icon: EvaIcons.shareOutline,
                                 ),

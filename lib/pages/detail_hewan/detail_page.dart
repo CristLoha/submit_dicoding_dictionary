@@ -14,7 +14,9 @@ class DetailPage extends StatelessWidget {
         mobileBody: MobileDetail(
           data: data,
         ),
-        webBody: WebDetail(),
+        webBody: WebDetail(
+          data: data,
+        ),
       ),
     );
   }

@@ -195,6 +195,7 @@ class _WebAnimalState extends State<WebAnimal> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(

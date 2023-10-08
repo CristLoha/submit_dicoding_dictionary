@@ -5,6 +5,7 @@ import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';
 
+import '../../../widgets/text_underline.dart';
 import '../../detail_hewan/detail_page.dart';
 
 class MobileBookmark extends StatefulWidget {
@@ -198,17 +199,17 @@ class _MobileBookmarkState extends State<MobileBookmark> {
                                 _loadFavoriteIds();
                               }
                             },
-                            child: Text(
-                              documentData?['kataIndo'] ?? '',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 20,
-                                fontWeight: medium,
-                              ),
+                            child: UnderlineText(
+                              text: documentData?['kataIndo'] ?? '',
+                              fontSize: 20,
+                              fontWeight: medium,
                             ),
                           ),
-                          subtitle: Text(
-                            documentData?['kataSahu'] ?? '',
-                            style: greyTextStyle.copyWith(fontSize: 18),
+                          subtitle: UnderlineText(
+                            text: documentData?['kataSahu'] ?? '',
+                            fontSize: 18,
+                            color: greyColor,
+                            fontWeight: medium,
                           ),
                           trailing: IconButton(
                             onPressed: () {

@@ -186,6 +186,7 @@ class _MobileAnimalState extends State<MobileAnimal> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(
