@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:submit_dicoding_dictionary/pages/detail_hewan/detail_page.dart';
+import 'package:submit_dicoding_dictionary/pages/detail/detail_page.dart';
 
 import '../../../shared/theme.dart';
 import '../../../widgets/shimmer_loading.dart';

@@ -8,7 +8,7 @@ import '../../../models/stream_manager.dart';
 import '../../../widgets/app_input.dart';
 import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
-import '../../detail_hewan/detail_page.dart';
+import '../../detail/detail_page.dart';
 
 class WebAnimal extends StatefulWidget {
   const WebAnimal({super.key});

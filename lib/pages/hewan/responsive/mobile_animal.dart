@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/models/stream_manager.dart';
-import 'package:submit_dicoding_dictionary/pages/detail_hewan/detail_page.dart';
+import 'package:submit_dicoding_dictionary/pages/detail/detail_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
 import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';

@@ -66,7 +66,7 @@ class _MobileDetailState extends State<MobileDetail> {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context,
                 true); // Kembali ke halaman sebelumnya dengan status perubahan

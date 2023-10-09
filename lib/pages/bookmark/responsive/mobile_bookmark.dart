@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';
 
 import '../../../widgets/text_underline.dart';
-import '../../detail_hewan/detail_page.dart';
+import '../../detail/detail_page.dart';
 
 class MobileBookmark extends StatefulWidget {
   const MobileBookmark({super.key});

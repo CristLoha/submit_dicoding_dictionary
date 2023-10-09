@@ -9,7 +9,7 @@ import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
 import '../../../models/stream_manager.dart';
 import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
-import '../../detail_hewan/detail_page.dart';
+import '../../detail/detail_page.dart';
 
 class MobileSearch extends StatefulWidget {
   const MobileSearch({super.key});
