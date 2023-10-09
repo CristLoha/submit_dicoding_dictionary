@@ -36,7 +36,7 @@ class _MobileSearchState extends State<MobileSearch> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
+    /// Mengambil semua data hewan saat inisialisasi
     _streamManager.getStreamAllWords().listen((data) {
       setState(() {
         _allData = data.docs;
@@ -84,10 +84,10 @@ class _MobileSearchState extends State<MobileSearch> {
 
     setState(() {
       if (_favoriteIds.contains(documentId)) {
-        /// Hapus ID dari daftar favorit jika sudah ada
+        /// Hapus ID dari daftar favorit jika id sudah diarsip
         _favoriteIds.remove(documentId);
       } else {
-        /// Tambahkan ID ke daftar favorit jika belum ada
+        /// Tambahkan ID ke daftar favorit jika id belum diarsip
         _favoriteIds.add(documentId);
       }
 
@@ -118,8 +118,6 @@ class _MobileSearchState extends State<MobileSearch> {
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(value);
-
-                  /// Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),
@@ -187,6 +185,7 @@ class _MobileSearchState extends State<MobileSearch> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(
@@ -275,6 +274,7 @@ class _MobileSearchState extends State<MobileSearch> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(
