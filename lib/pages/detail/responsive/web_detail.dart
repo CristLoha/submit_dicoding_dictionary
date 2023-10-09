@@ -185,11 +185,6 @@ class _WebDetailState extends State<WebDetail> {
                                     },
                                     icon: EvaIcons.shareOutline,
                                   ),
-                                  12.widthBox,
-                                  ButtonTransparant(
-                                    onTap: () {},
-                                    icon: EvaIcons.volumeUpOutline,
-                                  ),
                                 ],
                               ),
                             ],

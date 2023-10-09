@@ -3,6 +3,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:share_plus/share_plus.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -108,6 +109,7 @@ class _MobileDetailState extends State<MobileDetail> {
               String contohSahu = data['contohSahu'] as String;
               String contohIndo = data['contohIndo'] as String;
               String definisi = data['definisi'] as String;
+
               bool isFavorite = _isFavorite(widget.data);
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -138,7 +140,7 @@ class _MobileDetailState extends State<MobileDetail> {
                             ),
                             20.heightBox,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ButtonTransparant(
                                   onTap: () {
@@ -153,6 +155,7 @@ class _MobileDetailState extends State<MobileDetail> {
                                   },
                                   icon: EvaIcons.copyOutline,
                                 ),
+                                12.widthBox,
                                 ButtonTransparant(
                                   ///INI UNTUK BOOKMARK
                                   onTap: () {
@@ -162,6 +165,7 @@ class _MobileDetailState extends State<MobileDetail> {
                                       ? FontAwesomeIcons.solidBookmark
                                       : FontAwesomeIcons.bookmark,
                                 ),
+                                12.widthBox,
                                 ButtonTransparant(
                                   onTap: () {
                                     Share.share(
@@ -169,10 +173,6 @@ class _MobileDetailState extends State<MobileDetail> {
                                         " \nDefinisi dari $kataIndo, yaitu: $definisi");
                                   },
                                   icon: EvaIcons.shareOutline,
-                                ),
-                                ButtonTransparant(
-                                  onTap: () {},
-                                  icon: EvaIcons.volumeUpOutline,
                                 ),
                               ],
                             ),
