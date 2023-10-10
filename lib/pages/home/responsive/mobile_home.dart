@@ -7,7 +7,6 @@ import 'package:submit_dicoding_dictionary/pages/tempat/tempat_page.dart';
 import 'package:submit_dicoding_dictionary/pages/tumbuhan/tumbuhan_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
-
 import '../../../shared/img_string.dart';
 
 class MobileHome extends StatelessWidget {

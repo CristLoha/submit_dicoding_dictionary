@@ -126,8 +126,9 @@ class _WebHewanState extends State<WebHewan> {
                 hintText: "Cari kata hewan...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
+
+                  /// Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),
