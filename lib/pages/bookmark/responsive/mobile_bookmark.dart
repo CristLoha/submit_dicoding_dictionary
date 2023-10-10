@@ -62,9 +62,10 @@ class _MobileBookmarkState extends State<MobileBookmark> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (bookmarkedIds.isNotEmpty) {
-      // Hanya menghapus data jika ada data yang akan dihapus
+      /// Hanya menghapus data jika ada data yang akan dihapus
       setState(() {
-        bookmarkedIds.clear(); // Menghapus semua ID favorit
+        /// Menghapus semua ID favorit
+        bookmarkedIds.clear();
       });
 
       /// Menyimpan daftar ID favorit yang baru ke SharedPreferences (kosong)
@@ -177,18 +178,13 @@ class _MobileBookmarkState extends State<MobileBookmark> {
                         child: ListTile(
                           title: GestureDetector(
                             onTap: () async {
-                              String documentId =
-                                  bookmarkedId; // Ambil ID dari SharedPreferences
-
-                              // Navigasikan ke halaman detail dengan data yang sesuai
+                              String documentId = bookmarkedId;
                               final shouldReloadData = await Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
                                     return DetailPage(
                                       data: documentId,
-
-                                      /// Kirim ID sebagai parameter ke halaman detail
                                     );
                                   },
                                 ),

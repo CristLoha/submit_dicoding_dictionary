@@ -36,7 +36,6 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStreamKategori('tumbuhan').listen((data) {
       setState(() {
         _allData = data.docs;
@@ -47,9 +46,8 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
   /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
-      String lowercaseKeyword = keyword.toLowerCase();
-
       /// Konversi keyword ke huruf kecil
+      String lowercaseKeyword = keyword.toLowerCase();
 
       setState(() {
         /// Filter data yang cocok dengan keyword dalam field 'kataIndo' atau 'kataSahu'
@@ -73,7 +71,6 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      // Baca daftar ID favorit dari SharedPreferences
       _favoriteIds = prefs.getStringList('favorite_ids') ?? [];
     });
   }

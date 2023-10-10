@@ -21,8 +21,9 @@ class MobileDetail extends StatefulWidget {
 }
 
 class _MobileDetailState extends State<MobileDetail> {
-  List<String> _favoriteIds = []; //. Daftar ID dokumen favorit
-  // Fungsi untuk memuat daftar ID favorit dari SharedPreferences
+  List<String> _favoriteIds = [];
+
+  /// Fungsi untuk memuat daftar ID favorit dari SharedPreferences
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {

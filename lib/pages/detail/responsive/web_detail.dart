@@ -24,8 +24,9 @@ class WebDetail extends StatefulWidget {
 }
 
 class _WebDetailState extends State<WebDetail> {
-  List<String> _favoriteIds = []; //. Daftar ID dokumen favorit
-  // Fungsi untuk memuat daftar ID favorit dari SharedPreferences
+  List<String> _favoriteIds = [];
+
+  /// Fungsi untuk memuat daftar ID favorit dari SharedPreferences
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -72,8 +73,8 @@ class _WebDetailState extends State<WebDetail> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context,
-                true); // Kembali ke halaman sebelumnya dengan status perubahan
+            /// Kembali ke halaman sebelumnya dengan status perubahan
+            Navigator.pop(context, true);
           },
         ),
         iconTheme: IconThemeData(color: blackColor),
@@ -168,7 +169,6 @@ class _WebDetailState extends State<WebDetail> {
                                   ),
                                   12.widthBox,
                                   ButtonTransparant(
-                                    ///INI UNTUK BOOKMARK
                                     onTap: () {
                                       _toggleFavoriteStatus(widget.data);
                                     },

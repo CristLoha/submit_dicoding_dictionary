@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
-
 import '../../../models/stream_manager.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/app_input.dart';
@@ -36,7 +35,6 @@ class _MobileTempatState extends State<MobileTempat> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStreamKategori('tempat').listen((data) {
       setState(() {
         _allData = data.docs;
@@ -73,7 +71,7 @@ class _MobileTempatState extends State<MobileTempat> {
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      // Baca daftar ID favorit dari SharedPreferences
+      /// Baca daftar ID favorit dari SharedPreferences
       _favoriteIds = prefs.getStringList('favorite_ids') ?? [];
     });
   }
@@ -118,8 +116,8 @@ class _MobileTempatState extends State<MobileTempat> {
                 hintText: "Cari kata tempat...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  /// Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

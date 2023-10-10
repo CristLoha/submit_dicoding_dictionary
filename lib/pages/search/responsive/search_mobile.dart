@@ -35,7 +35,6 @@ class _MobileSearchState extends State<MobileSearch> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Mengambil semua data hewan saat inisialisasi
     _streamManager.getStreamAllWords().listen((data) {
       setState(() {
         _allData = data.docs;

@@ -35,7 +35,6 @@ class _WebAngkaState extends State<WebAngka> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStreamKategori('angka').listen((data) {
       setState(() {
         _allData = data.docs;
@@ -127,8 +126,6 @@ class _WebAngkaState extends State<WebAngka> {
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(value);
-
-                  /// Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

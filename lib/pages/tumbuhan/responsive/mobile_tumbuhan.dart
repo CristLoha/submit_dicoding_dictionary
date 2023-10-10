@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
-
 import '../../../models/stream_manager.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/app_input.dart';
@@ -36,7 +35,6 @@ class _MobileTumbuhanState extends State<MobileTumbuhan> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStreamKategori('tumbuhan').listen((data) {
       setState(() {
         _allData = data.docs;
@@ -47,9 +45,8 @@ class _MobileTumbuhanState extends State<MobileTumbuhan> {
   /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
-      String lowercaseKeyword = keyword.toLowerCase();
-
       /// Konversi keyword ke huruf kecil
+      String lowercaseKeyword = keyword.toLowerCase();
 
       setState(() {
         /// Filter data yang cocok dengan keyword dalam field 'kataIndo' atau 'kataSahu'
@@ -118,8 +115,8 @@ class _MobileTumbuhanState extends State<MobileTumbuhan> {
                 hintText: "Cari kata tumbuhan...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  /// Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

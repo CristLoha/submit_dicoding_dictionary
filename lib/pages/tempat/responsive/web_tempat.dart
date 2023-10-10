@@ -36,7 +36,7 @@ class _WebTempatState extends State<WebTempat> {
     _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
+
     _streamManager.getStreamKategori('tempat').listen((data) {
       setState(() {
         _allData = data.docs;
@@ -127,8 +127,8 @@ class _WebTempatState extends State<WebTempat> {
                 hintText: "Cari kata tempat...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  /// Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

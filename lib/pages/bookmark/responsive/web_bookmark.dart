@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/pages/detail/detail_page.dart';
-
 import '../../../shared/theme.dart';
 import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
@@ -113,10 +112,9 @@ class _WebBookmarkState extends State<WebBookmark> {
                         child: ListTile(
                           title: GestureDetector(
                             onTap: () async {
-                              String documentId =
-                                  bookmarkedId; // Ambil ID dari SharedPreferences
+                              // Ambil ID dari SharedPreferences
+                              String documentId = bookmarkedId;
 
-                              // Navigasikan ke halaman detail dengan data yang sesuai
                               final shouldReloadData = await Navigator.push(
                                 context,
                                 MaterialPageRoute(
