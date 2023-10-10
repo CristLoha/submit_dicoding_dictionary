@@ -21,9 +21,9 @@ class _MobileSearchState extends State<MobileSearch> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
+  /// Daftar ID dokumen favorit
   List<String> _favoriteIds = [];
 
-  /// Daftar ID dokumen favorit
   /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> _searchResults = [];
   List<DocumentSnapshot> _allData = [];

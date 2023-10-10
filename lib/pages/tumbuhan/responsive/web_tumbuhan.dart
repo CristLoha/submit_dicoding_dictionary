@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
-
 import '../../../models/stream_manager.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/app_input.dart';
@@ -22,9 +21,9 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
+  /// Daftar ID dokumen favorit
   List<String> _favoriteIds = [];
 
-  /// Daftar ID dokumen favorit
   /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> _searchResults = [];
   List<DocumentSnapshot> _allData = [];
@@ -124,8 +123,7 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
                 hintText: "Cari kata tumbuhan...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

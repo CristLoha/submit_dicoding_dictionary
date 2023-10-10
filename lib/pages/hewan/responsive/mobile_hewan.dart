@@ -23,7 +23,6 @@ class _MobileHewanState extends State<MobileHewan> {
 
   List<String> _favoriteIds = [];
 
-  /// Daftar ID dokumen favorit
   /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> _searchResults = [];
   List<DocumentSnapshot> _allData = [];
@@ -32,9 +31,10 @@ class _MobileHewanState extends State<MobileHewan> {
   void initState() {
     super.initState();
     _streamManager = StreamManager();
-    _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
+    _loadFavoriteIds();
+
     /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStreamKategori('hewan').listen((data) {
       setState(() {
@@ -46,9 +46,8 @@ class _MobileHewanState extends State<MobileHewan> {
   /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
-      String lowercaseKeyword = keyword.toLowerCase();
-
       /// Konversi keyword ke huruf kecil
+      String lowercaseKeyword = keyword.toLowerCase();
 
       setState(() {
         /// Filter data yang cocok dengan keyword dalam field 'kataIndo' atau 'kataSahu'

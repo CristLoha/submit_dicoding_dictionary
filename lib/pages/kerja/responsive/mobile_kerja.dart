@@ -32,10 +32,11 @@ class _MobileKerjaState extends State<MobileKerja> {
   void initState() {
     super.initState();
     _streamManager = StreamManager();
-    _loadFavoriteIds();
 
     /// Muat daftar ID favorit saat aplikasi dimuat
-    /// Ambil semua data hewan saat inisialisasi
+    _loadFavoriteIds();
+
+    /// Ambil data berdasarkan kategori saat inisialisasi
     _streamManager.getStreamKategori('kerja').listen((data) {
       setState(() {
         _allData = data.docs;

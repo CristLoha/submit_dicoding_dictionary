@@ -23,7 +23,6 @@ class _WebHewanState extends State<WebHewan> {
 
   List<String> _favoriteIds = [];
 
-  /// Daftar ID dokumen favorit
   /// Variabel untuk menyimpan hasil pencarian:
   List<DocumentSnapshot> _searchResults = [];
   List<DocumentSnapshot> _allData = [];
@@ -34,7 +33,6 @@ class _WebHewanState extends State<WebHewan> {
     _streamManager = StreamManager();
     _loadFavoriteIds();
 
-    /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
     _streamManager.getStreamKategori('hewan').listen((data) {
       setState(() {
