@@ -72,7 +72,7 @@ class _MobileKerjaState extends State<MobileKerja> {
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      // Baca daftar ID favorit dari SharedPreferences
+      /// Baca daftar ID favorit dari SharedPreferences
       _favoriteIds = prefs.getStringList('favorite_ids') ?? [];
     });
   }
@@ -117,8 +117,8 @@ class _MobileKerjaState extends State<MobileKerja> {
                 hintText: "Cari kata kerja...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  /// Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

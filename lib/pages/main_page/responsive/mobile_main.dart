@@ -16,7 +16,7 @@ class MobileMain extends StatefulWidget {
 class _MobileMainState extends State<MobileMain> {
   int _selectedIndex = 0;
 
-  // Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
+  /// Daftar halaman yang akan ditampilkan sesuai dengan indeks item yang dipilih.
   final List<Widget> _pages = const [
     HomePage(),
     SearchPage(),

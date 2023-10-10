@@ -127,8 +127,8 @@ class _WebKerjaState extends State<WebKerja> {
                 hintText: "Cari kata kerja...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  /// Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

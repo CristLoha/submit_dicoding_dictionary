@@ -46,9 +46,8 @@ class _WebHewanState extends State<WebHewan> {
   /// Fungsi _performSearch() untuk melakukan pencarian:
   void _performSearch(String keyword) {
     if (keyword.isNotEmpty) {
-      String lowercaseKeyword = keyword.toLowerCase();
-
       /// Konversi keyword ke huruf kecil
+      String lowercaseKeyword = keyword.toLowerCase();
 
       setState(() {
         /// Filter data yang cocok dengan keyword dalam field 'kataIndo' atau 'kataSahu'

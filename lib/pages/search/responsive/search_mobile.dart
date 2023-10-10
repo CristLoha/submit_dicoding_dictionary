@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import 'package:submit_dicoding_dictionary/widgets/app_input.dart';
-
 import '../../../models/stream_manager.dart';
 import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
