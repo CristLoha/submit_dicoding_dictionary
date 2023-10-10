@@ -117,8 +117,9 @@ class _MobileBendaState extends State<MobileBenda> {
                 hintText: "Cari kata benda...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
+
+                  /// Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

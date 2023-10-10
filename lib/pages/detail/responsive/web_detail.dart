@@ -180,8 +180,8 @@ class _WebDetailState extends State<WebDetail> {
                                   ButtonTransparant(
                                     onTap: () {
                                       Share.share(
-                                          "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: $contohSahu yang artinya $contohIndo "
-                                          " \nDefinisi dari $kataIndo, yaitu: $definisi");
+                                          "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: ${contohSahu.toUpperCase()} yang artinya ${contohIndo.toUpperCase()}"
+                                          " \nDefinisi dari ${kataIndo.toUpperCase()}, yaitu: ${definisi.toUpperCase()}");
                                     },
                                     icon: EvaIcons.shareOutline,
                                   ),

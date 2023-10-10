@@ -80,7 +80,7 @@ class _MobileBookmarkState extends State<MobileBookmark> {
           ),
           backgroundColor: whiteColor,
           duration: const Duration(seconds: 1),
-          behavior: SnackBarBehavior.floating, // Posisi floating
+          behavior: SnackBarBehavior.floating,
           margin: const EdgeInsets.only(
             bottom: 90,
             right: 60,
@@ -99,7 +99,7 @@ class _MobileBookmarkState extends State<MobileBookmark> {
           ),
           backgroundColor: whiteColor,
           duration: const Duration(seconds: 1),
-          behavior: SnackBarBehavior.floating, // Posisi floating
+          behavior: SnackBarBehavior.floating,
           margin: const EdgeInsets.only(
             bottom: 90,
             right: 60,
@@ -114,7 +114,7 @@ class _MobileBookmarkState extends State<MobileBookmark> {
   Future<void> _loadFavoriteIds() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      // Baca daftar ID favorit dari SharedPreferences
+      /// Baca daftar ID favorit dari SharedPreferences
       _bookmarkedIds = prefs.getStringList('favorite_ids') ?? [];
     });
   }
@@ -186,8 +186,9 @@ class _MobileBookmarkState extends State<MobileBookmark> {
                                 MaterialPageRoute(
                                   builder: (context) {
                                     return DetailPage(
-                                      data:
-                                          documentId, // Kirim ID sebagai parameter ke halaman detail
+                                      data: documentId,
+
+                                      /// Kirim ID sebagai parameter ke halaman detail
                                     );
                                   },
                                 ),

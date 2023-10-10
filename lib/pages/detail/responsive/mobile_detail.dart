@@ -3,9 +3,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:share_plus/share_plus.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/widgets/button_transparant.dart';
@@ -69,8 +67,7 @@ class _MobileDetailState extends State<MobileDetail> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context,
-                true); // Kembali ke halaman sebelumnya dengan status perubahan
+            Navigator.pop(context, true);
           },
         ),
         iconTheme: IconThemeData(color: whiteColor),
@@ -157,7 +154,6 @@ class _MobileDetailState extends State<MobileDetail> {
                                 ),
                                 12.widthBox,
                                 ButtonTransparant(
-                                  ///INI UNTUK BOOKMARK
                                   onTap: () {
                                     _toggleFavoriteStatus(widget.data);
                                   },
@@ -169,8 +165,8 @@ class _MobileDetailState extends State<MobileDetail> {
                                 ButtonTransparant(
                                   onTap: () {
                                     Share.share(
-                                        "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: $contohSahu yang artinya $contohIndo "
-                                        " \nDefinisi dari $kataIndo, yaitu: $definisi");
+                                        "Kata ${kataIndo.toUpperCase()} dalam bahasa sahu yaitu ${kataSahu.toUpperCase()} : \nContoh kalimat: ${contohSahu.toUpperCase()} yang artinya ${contohIndo.toUpperCase()}"
+                                        " \nDefinisi dari ${kataIndo.toUpperCase()}, yaitu: ${definisi.toUpperCase()}");
                                   },
                                   icon: EvaIcons.shareOutline,
                                 ),

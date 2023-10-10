@@ -126,8 +126,9 @@ class _WebBendaState extends State<WebBenda> {
                 hintText: "Cari kata benda...",
                 controller: _searchController,
                 onChanged: (value) {
-                  _performSearch(
-                      value); // Memanggil fungsi pencarian saat teks berubah
+                  _performSearch(value);
+
+                  /// Memanggil fungsi pencarian saat teks berubah
                 },
                 prefixIcon: const Icon(Icons.search, size: 28),
               ),

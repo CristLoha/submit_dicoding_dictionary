@@ -17,7 +17,7 @@ class AppInput extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText,
-    this.hintText = "Cari kata...",
+    this.hintText = "Cari semua kata...",
     this.initialValue,
     this.colorBorder,
     this.onChanged,
