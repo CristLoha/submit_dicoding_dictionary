@@ -4,6 +4,7 @@ import 'package:submit_dicoding_dictionary/pages/kerja/kerja_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import '../../../shared/img_string.dart';
 import '../../../shared/theme.dart';
+import '../../angka/angka_page.dart';
 import '../../hewan/hewan_page.dart';
 import '../../tempat/tempat_page.dart';
 import '../../tumbuhan/tumbuhan_page.dart';
@@ -26,7 +27,7 @@ class WebHome extends StatelessWidget {
               child: GridView.builder(
                 padding: const EdgeInsets.only(bottom: 40, top: 30),
                 scrollDirection: Axis.vertical,
-                itemCount: 8,
+                itemCount: 6,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   mainAxisSpacing: 40,
@@ -101,17 +102,14 @@ class WebHome extends StatelessWidget {
                     case 5:
                       title = "Angka";
                       image = ImgString.imgNumbers;
-                      onTap = () {};
-                      break;
-                    case 6:
-                      title = "Anggota Tubuh";
-                      image = ImgString.imgBody;
-                      onTap = () {};
-                      break;
-                    case 7:
-                      title = "Depan";
-                      image = ImgString.imgEntrance;
-                      onTap = () {};
+                      onTap = () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AngkaPage(),
+                          ),
+                        );
+                      };
                       break;
 
                     default:

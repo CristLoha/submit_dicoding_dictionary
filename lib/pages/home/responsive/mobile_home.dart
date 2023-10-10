@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:submit_dicoding_dictionary/pages/angka/angka_page.dart';
 import 'package:submit_dicoding_dictionary/pages/benda/benda_page.dart';
 import 'package:submit_dicoding_dictionary/pages/hewan/hewan_page.dart';
 import 'package:submit_dicoding_dictionary/pages/kerja/kerja_page.dart';
@@ -36,7 +37,7 @@ class MobileHome extends StatelessWidget {
                     bottom: 20,
                   ),
                   scrollDirection: Axis.vertical,
-                  itemCount: 8,
+                  itemCount: 6,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 20,
@@ -111,17 +112,14 @@ class MobileHome extends StatelessWidget {
                       case 5:
                         title = "Angka";
                         image = ImgString.imgNumbers;
-                        onTap = () {};
-                        break;
-                      case 6:
-                        title = "Anggota Tubuh";
-                        image = ImgString.imgBody;
-                        onTap = () {};
-                        break;
-                      case 7:
-                        title = "Depan";
-                        image = ImgString.imgEntrance;
-                        onTap = () {};
+                        onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AngkaPage(),
+                            ),
+                          );
+                        };
                         break;
 
                       default:
