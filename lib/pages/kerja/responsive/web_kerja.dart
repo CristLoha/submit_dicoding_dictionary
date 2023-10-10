@@ -266,8 +266,8 @@ class _WebKerjaState extends State<WebKerja> {
                             ),
                             child: ListTile(
                               title: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
+                                onTap: () async {
+                                  final shouldReloadData = await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
@@ -277,6 +277,12 @@ class _WebKerjaState extends State<WebKerja> {
                                       },
                                     ),
                                   );
+
+                                  /// Memeriksa apakah ada perubahan data yang perlu dimuat ulang
+                                  if (shouldReloadData == true) {
+                                    /// Memuat ulang data preferensi jika terjadi perubahan
+                                    _loadFavoriteIds();
+                                  }
                                 },
                                 child: UnderlineText(
                                   text: title,

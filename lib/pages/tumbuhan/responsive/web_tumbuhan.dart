@@ -104,7 +104,7 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
         centerTitle: false,
         iconTheme: IconThemeData(color: blackColor),
         backgroundColor: lightBackgroundColor,
-        title: const Text('Kata Hewan'),
+        title: const Text('Kata Tumbuhan'),
         titleTextStyle: blackTextStyle.copyWith(
           fontWeight: semiBold,
           fontSize: 20,
@@ -260,8 +260,8 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
                             ),
                             child: ListTile(
                               title: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
+                                onTap: () async {
+                                  final shouldReloadData = await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
@@ -271,6 +271,12 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
                                       },
                                     ),
                                   );
+
+                                  /// Memeriksa apakah ada perubahan data yang perlu dimuat ulang
+                                  if (shouldReloadData == true) {
+                                    /// Memuat ulang data preferensi jika terjadi perubahan
+                                    _loadFavoriteIds();
+                                  }
                                 },
                                 child: UnderlineText(
                                   text: title,
