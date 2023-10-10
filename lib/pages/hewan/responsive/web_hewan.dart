@@ -285,6 +285,7 @@ class _WebHewanState extends State<WebHewan> {
                               subtitle: UnderlineText(
                                 text: subtitle,
                                 fontSize: 18,
+                                color: greyColor,
                               ),
                               trailing: IconButton(
                                 onPressed: () {

@@ -275,6 +275,7 @@ class _MobileHewanState extends State<MobileHewan> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(

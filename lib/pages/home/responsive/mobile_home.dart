@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/pages/benda/benda_page.dart';
 import 'package:submit_dicoding_dictionary/pages/hewan/hewan_page.dart';
 import 'package:submit_dicoding_dictionary/pages/kerja/kerja_page.dart';
+import 'package:submit_dicoding_dictionary/pages/tempat/tempat_page.dart';
 import 'package:submit_dicoding_dictionary/pages/tumbuhan/tumbuhan_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
@@ -15,7 +16,7 @@ class MobileHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kamus Bahasa Sahu'),
+        title: const Text('Kamus Bahasa Sahu'),
       ),
       body: SafeArea(
         child: Padding(
@@ -98,7 +99,14 @@ class MobileHome extends StatelessWidget {
                       case 4:
                         title = "Tempat";
                         image = ImgString.imgMap;
-                        onTap = () {};
+                        onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TempatPage(),
+                            ),
+                          );
+                        };
                         break;
                       case 5:
                         title = "Angka";

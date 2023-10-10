@@ -11,14 +11,14 @@ import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
 import '../../detail/detail_page.dart';
 
-class WebKerja extends StatefulWidget {
-  const WebKerja({super.key});
+class MobileTempat extends StatefulWidget {
+  const MobileTempat({super.key});
 
   @override
-  State<WebKerja> createState() => _WebKerjaState();
+  State<MobileTempat> createState() => _MobileTempatState();
 }
 
-class _WebKerjaState extends State<WebKerja> {
+class _MobileTempatState extends State<MobileTempat> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
@@ -37,7 +37,7 @@ class _WebKerjaState extends State<WebKerja> {
 
     /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
-    _streamManager.getStreamKategori('kerja').listen((data) {
+    _streamManager.getStreamKategori('tempat').listen((data) {
       setState(() {
         _allData = data.docs;
       });
@@ -105,26 +105,17 @@ class _WebKerjaState extends State<WebKerja> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
-        iconTheme: IconThemeData(color: blackColor),
-        backgroundColor: lightBackgroundColor,
-        title: const Text('Kata Kerja'),
-        titleTextStyle: blackTextStyle.copyWith(
-          fontWeight: semiBold,
-          fontSize: 20,
-        ),
+        title: const Text('Kata Tempat'),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 130,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
               30.heightBox,
               AppInput(
-                hintText: "Cari kata kerja...",
+                hintText: "Cari kata tempat...",
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(
@@ -285,8 +276,8 @@ class _WebKerjaState extends State<WebKerja> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
-                                color: greyColor,
                                 fontSize: 18,
+                                color: greyColor,
                               ),
                               trailing: IconButton(
                                 onPressed: () {

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/pages/benda/benda_page.dart';
 import 'package:submit_dicoding_dictionary/pages/kerja/kerja_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
-
 import '../../../shared/img_string.dart';
 import '../../../shared/theme.dart';
 import '../../hewan/hewan_page.dart';
+import '../../tempat/tempat_page.dart';
 import '../../tumbuhan/tumbuhan_page.dart';
 
 class WebHome extends StatelessWidget {
@@ -89,7 +89,14 @@ class WebHome extends StatelessWidget {
                     case 4:
                       title = "Tempat";
                       image = ImgString.imgMap;
-                      onTap = () {};
+                      onTap = () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TempatPage(),
+                          ),
+                        );
+                      };
                       break;
                     case 5:
                       title = "Angka";

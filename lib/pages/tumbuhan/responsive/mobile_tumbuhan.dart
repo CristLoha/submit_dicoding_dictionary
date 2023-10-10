@@ -277,6 +277,7 @@ class _MobileTumbuhanState extends State<MobileTumbuhan> {
                               subtitle: UnderlineText(
                                 text: subtitle,
                                 fontSize: 18,
+                                color: greyColor,
                               ),
                               trailing: IconButton(
                                 onPressed: () {

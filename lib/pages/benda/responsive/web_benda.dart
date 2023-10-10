@@ -284,6 +284,7 @@ class _WebBendaState extends State<WebBenda> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(

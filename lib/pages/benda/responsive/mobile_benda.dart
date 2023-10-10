@@ -275,6 +275,7 @@ class _MobileBendaState extends State<MobileBenda> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(

@@ -11,14 +11,14 @@ import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
 import '../../detail/detail_page.dart';
 
-class WebKerja extends StatefulWidget {
-  const WebKerja({super.key});
+class WebTempat extends StatefulWidget {
+  const WebTempat({super.key});
 
   @override
-  State<WebKerja> createState() => _WebKerjaState();
+  State<WebTempat> createState() => _WebTempatState();
 }
 
-class _WebKerjaState extends State<WebKerja> {
+class _WebTempatState extends State<WebTempat> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
@@ -37,7 +37,7 @@ class _WebKerjaState extends State<WebKerja> {
 
     /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
-    _streamManager.getStreamKategori('kerja').listen((data) {
+    _streamManager.getStreamKategori('tempat').listen((data) {
       setState(() {
         _allData = data.docs;
       });
@@ -108,7 +108,7 @@ class _WebKerjaState extends State<WebKerja> {
         centerTitle: false,
         iconTheme: IconThemeData(color: blackColor),
         backgroundColor: lightBackgroundColor,
-        title: const Text('Kata Kerja'),
+        title: const Text('Kata Tempat'),
         titleTextStyle: blackTextStyle.copyWith(
           fontWeight: semiBold,
           fontSize: 20,
@@ -124,7 +124,7 @@ class _WebKerjaState extends State<WebKerja> {
             children: [
               30.heightBox,
               AppInput(
-                hintText: "Cari kata kerja...",
+                hintText: "Cari kata tempat...",
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(
@@ -285,8 +285,8 @@ class _WebKerjaState extends State<WebKerja> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
-                                color: greyColor,
                                 fontSize: 18,
+                                color: greyColor,
                               ),
                               trailing: IconButton(
                                 onPressed: () {

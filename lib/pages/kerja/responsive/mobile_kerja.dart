@@ -275,6 +275,7 @@ class _MobileKerjaState extends State<MobileKerja> {
                               ),
                               subtitle: UnderlineText(
                                 text: subtitle,
+                                color: greyColor,
                                 fontSize: 18,
                               ),
                               trailing: IconButton(

@@ -286,6 +286,7 @@ class _WebTumbuhanState extends State<WebTumbuhan> {
                               subtitle: UnderlineText(
                                 text: subtitle,
                                 fontSize: 18,
+                                color: greyColor,
                               ),
                               trailing: IconButton(
                                 onPressed: () {
