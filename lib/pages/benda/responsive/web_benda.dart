@@ -107,7 +107,7 @@ class _WebBendaState extends State<WebBenda> {
         centerTitle: false,
         iconTheme: IconThemeData(color: blackColor),
         backgroundColor: lightBackgroundColor,
-        title: const Text('Hewan'),
+        title: const Text('Kata Benda'),
         titleTextStyle: blackTextStyle.copyWith(
           fontWeight: semiBold,
           fontSize: 20,

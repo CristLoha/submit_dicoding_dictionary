@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/pages/benda/benda_page.dart';
+import 'package:submit_dicoding_dictionary/pages/kerja/kerja_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 
 import '../../../shared/img_string.dart';
@@ -63,7 +64,14 @@ class WebHome extends StatelessWidget {
                     case 2:
                       title = "Kerja";
                       image = ImgString.imgChat;
-                      onTap = () {};
+                      onTap = () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const KerjaPage(),
+                          ),
+                        );
+                      };
                       break;
                     case 3:
                       title = "Tumbuhan";

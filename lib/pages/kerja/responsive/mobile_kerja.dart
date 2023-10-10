@@ -10,14 +10,14 @@ import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
 import '../../detail/detail_page.dart';
 
-class MobileBenda extends StatefulWidget {
-  const MobileBenda({super.key});
+class MobileKerja extends StatefulWidget {
+  const MobileKerja({super.key});
 
   @override
-  State<MobileBenda> createState() => _MobileBendaState();
+  State<MobileKerja> createState() => _MobileKerjaState();
 }
 
-class _MobileBendaState extends State<MobileBenda> {
+class _MobileKerjaState extends State<MobileKerja> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
@@ -36,7 +36,7 @@ class _MobileBendaState extends State<MobileBenda> {
 
     /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
-    _streamManager.getStreamKategori('benda').listen((data) {
+    _streamManager.getStreamKategori('kerja').listen((data) {
       setState(() {
         _allData = data.docs;
       });
@@ -104,7 +104,7 @@ class _MobileBendaState extends State<MobileBenda> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kata Benda'),
+        title: const Text('Kata Kerja'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -114,7 +114,7 @@ class _MobileBendaState extends State<MobileBenda> {
             children: [
               30.heightBox,
               AppInput(
-                hintText: "Cari kata benda...",
+                hintText: "Cari kata kerja...",
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(

@@ -104,7 +104,7 @@ class _MobileHewanState extends State<MobileHewan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hewan'),
+        title: const Text('Kata Hewan'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),

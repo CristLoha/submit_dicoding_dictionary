@@ -107,7 +107,7 @@ class _WebHewanState extends State<WebHewan> {
         centerTitle: false,
         iconTheme: IconThemeData(color: blackColor),
         backgroundColor: lightBackgroundColor,
-        title: const Text('Hewan'),
+        title: const Text('Kata Hewan'),
         titleTextStyle: blackTextStyle.copyWith(
           fontWeight: semiBold,
           fontSize: 20,

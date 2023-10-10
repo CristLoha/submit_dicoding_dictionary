@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
+
 import '../../../models/stream_manager.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/app_input.dart';
@@ -10,14 +11,14 @@ import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
 import '../../detail/detail_page.dart';
 
-class MobileBenda extends StatefulWidget {
-  const MobileBenda({super.key});
+class WebKerja extends StatefulWidget {
+  const WebKerja({super.key});
 
   @override
-  State<MobileBenda> createState() => _MobileBendaState();
+  State<WebKerja> createState() => _WebKerjaState();
 }
 
-class _MobileBendaState extends State<MobileBenda> {
+class _WebKerjaState extends State<WebKerja> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
@@ -36,7 +37,7 @@ class _MobileBendaState extends State<MobileBenda> {
 
     /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
-    _streamManager.getStreamKategori('benda').listen((data) {
+    _streamManager.getStreamKategori('kerja').listen((data) {
       setState(() {
         _allData = data.docs;
       });
@@ -104,17 +105,26 @@ class _MobileBendaState extends State<MobileBenda> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kata Benda'),
+        centerTitle: false,
+        iconTheme: IconThemeData(color: blackColor),
+        backgroundColor: lightBackgroundColor,
+        title: const Text('Kata Kerja'),
+        titleTextStyle: blackTextStyle.copyWith(
+          fontWeight: semiBold,
+          fontSize: 20,
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 130,
+        ),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
               30.heightBox,
               AppInput(
-                hintText: "Cari kata benda...",
+                hintText: "Cari kata kerja...",
                 controller: _searchController,
                 onChanged: (value) {
                   _performSearch(
