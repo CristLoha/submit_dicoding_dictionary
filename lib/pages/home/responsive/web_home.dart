@@ -6,6 +6,7 @@ import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import '../../../shared/img_string.dart';
 import '../../../shared/theme.dart';
 import '../../hewan/hewan_page.dart';
+import '../../tumbuhan/tumbuhan_page.dart';
 
 class WebHome extends StatelessWidget {
   const WebHome({super.key});
@@ -76,7 +77,14 @@ class WebHome extends StatelessWidget {
                     case 3:
                       title = "Tumbuhan";
                       image = ImgString.imgtree;
-                      onTap = () {};
+                      onTap = () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TumbuhanPage(),
+                          ),
+                        );
+                      };
                       break;
                     case 4:
                       title = "Tempat";

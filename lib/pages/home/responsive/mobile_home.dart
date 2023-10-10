@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:submit_dicoding_dictionary/pages/benda/benda_page.dart';
 import 'package:submit_dicoding_dictionary/pages/hewan/hewan_page.dart';
 import 'package:submit_dicoding_dictionary/pages/kerja/kerja_page.dart';
+import 'package:submit_dicoding_dictionary/pages/tumbuhan/tumbuhan_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
@@ -85,7 +86,14 @@ class MobileHome extends StatelessWidget {
                       case 3:
                         title = "Tumbuhan";
                         image = ImgString.imgtree;
-                        onTap = () {};
+                        onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TumbuhanPage(),
+                            ),
+                          );
+                        };
                         break;
                       case 4:
                         title = "Tempat";
