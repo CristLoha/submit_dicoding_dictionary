@@ -10,14 +10,14 @@ import 'package:submit_dicoding_dictionary/widgets/shimmer_loading.dart';
 import '../../../shared/theme.dart';
 import '../../../widgets/text_underline.dart';
 
-class MobileAnimal extends StatefulWidget {
-  const MobileAnimal({super.key});
+class MobileHewan extends StatefulWidget {
+  const MobileHewan({super.key});
 
   @override
-  State<MobileAnimal> createState() => _MobileAnimalState();
+  State<MobileHewan> createState() => _MobileHewanState();
 }
 
-class _MobileAnimalState extends State<MobileAnimal> {
+class _MobileHewanState extends State<MobileHewan> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 

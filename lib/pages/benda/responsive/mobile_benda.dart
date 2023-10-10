@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
-import 'package:submit_dicoding_dictionary/shared/theme.dart';
 import '../../../models/stream_manager.dart';
+import '../../../shared/theme.dart';
 import '../../../widgets/app_input.dart';
 import '../../../widgets/shimmer_loading.dart';
 import '../../../widgets/text_underline.dart';
 import '../../detail/detail_page.dart';
 
-class WebAnimal extends StatefulWidget {
-  const WebAnimal({super.key});
+class MobileBenda extends StatefulWidget {
+  const MobileBenda({super.key});
 
   @override
-  State<WebAnimal> createState() => _WebAnimalState();
+  State<MobileBenda> createState() => _MobileBendaState();
 }
 
-class _WebAnimalState extends State<WebAnimal> {
+class _MobileBendaState extends State<MobileBenda> {
   StreamManager _streamManager = StreamManager();
   final TextEditingController _searchController = TextEditingController();
 
@@ -36,7 +36,7 @@ class _WebAnimalState extends State<WebAnimal> {
 
     /// Muat daftar ID favorit saat aplikasi dimuat
     /// Ambil semua data hewan saat inisialisasi
-    _streamManager.getStreamKategori('hewan').listen((data) {
+    _streamManager.getStreamKategori('benda').listen((data) {
       setState(() {
         _allData = data.docs;
       });
@@ -104,19 +104,10 @@ class _WebAnimalState extends State<WebAnimal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
-        iconTheme: IconThemeData(color: blackColor),
-        backgroundColor: lightBackgroundColor,
-        title: const Text('Hewan'),
-        titleTextStyle: blackTextStyle.copyWith(
-          fontWeight: semiBold,
-          fontSize: 20,
-        ),
+        title: const Text('Benda'),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 130,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:submit_dicoding_dictionary/pages/hewan/animal_page.dart';
+import 'package:submit_dicoding_dictionary/pages/benda/benda_page.dart';
+import 'package:submit_dicoding_dictionary/pages/hewan/hewan_page.dart';
 import 'package:submit_dicoding_dictionary/shared/box_extension.dart';
 import 'package:submit_dicoding_dictionary/shared/theme.dart';
 
@@ -51,7 +52,7 @@ class MobileHome extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const AnimalPage(),
+                              builder: (context) => const HewanPage(),
                             ),
                           );
                         };
@@ -59,7 +60,14 @@ class MobileHome extends StatelessWidget {
                       case 1:
                         title = "Benda";
                         image = ImgString.imgHammer;
-                        onTap = () {};
+                        onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const BendaPage(),
+                            ),
+                          );
+                        };
                         break;
                       case 2:
                         title = "Kerja";
