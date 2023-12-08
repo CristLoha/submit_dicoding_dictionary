@@ -10,12 +10,12 @@ class StreamManager {
         .snapshots();
   }
 
-  Stream<QuerySnapshot> searchData(String keyword, String category) {
-    return _firestore
-        .collection('kamus')
-        .where('kategori', isEqualTo: category)
-        .snapshots();
-  }
+  // Stream<QuerySnapshot> searchData(String keyword, String category) {
+  //   return _firestore
+  //       .collection('kamus')
+  //       .where('kategori', isEqualTo: category)
+  //       .snapshots();
+  // }
 
   Stream<QuerySnapshot> getStreamAllWords() {
     return _firestore.collection('kamus').snapshots();
